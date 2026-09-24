@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- BIZ UDPGothic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
   <title>きっぷゴー</title>
 
   <style>
@@ -12,15 +20,20 @@
       box-sizing: border-box;
     }
 
+
+    /* =========================
+       全体
+       ========================= */
+
     body {
       margin: 0;
+
       font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Noto Sans JP",
+        "BIZ UDPGothic",
         sans-serif;
 
       background: #f5f9ff;
+
       color: #222;
     }
 
@@ -30,16 +43,57 @@
        ========================= */
 
     header {
-      background: #1677d2;
-      color: white;
-      padding: 18px 20px;
-      text-align: center;
+      position: relative;
+
+      height: 150px;
+
+      background: #b9f5df;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
     }
 
+
+    /*
+     * 添付画像のような
+     * 濃い緑の横帯
+     */
+
+    header::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: 0;
+
+      height: 38px;
+
+      background: #62c45d;
+    }
+
+
     .logo {
-      font-size: 28px;
+      position: relative;
+
+      z-index: 1;
+
+      font-size: 32px;
+
       font-weight: bold;
-      letter-spacing: 1px;
+
+      letter-spacing: 2px;
+
+      color: #1677d2;
+
+      margin-bottom: 30px;
     }
 
 
@@ -49,21 +103,44 @@
 
     main {
       max-width: 1000px;
+
       margin: 0 auto;
+
       padding: 35px 20px 60px;
     }
 
+
+    /* =========================
+       ようこそ
+       ========================= */
+
     .welcome {
+      width: 100%;
+
       text-align: center;
+
       font-size: 32px;
-      margin-bottom: 45px;
+
+      margin: 0 auto 45px;
+
       color: #1265b5;
+
       font-weight: bold;
     }
 
+
+    /* =========================
+       見出し
+       ========================= */
+
     h2 {
+      width: 100%;
+
       text-align: center;
-      margin-bottom: 25px;
+
+      margin: 0 auto 25px;
+
+      font-weight: bold;
     }
 
 
@@ -73,7 +150,9 @@
 
     .search-box {
       background: white;
+
       border-radius: 15px;
+
       padding: 25px;
 
       box-shadow:
@@ -93,13 +172,16 @@
 
     .form-group {
       display: flex;
+
       flex-direction: column;
+
       gap: 7px;
     }
 
 
     label {
       font-weight: bold;
+
       font-size: 14px;
     }
 
@@ -117,6 +199,10 @@
       background: white;
 
       font-size: 15px;
+
+      font-family:
+        "BIZ UDPGothic",
+        sans-serif;
     }
 
 
@@ -153,6 +239,7 @@
 
     .weekday-title {
       font-weight: bold;
+
       margin-bottom: 12px;
     }
 
@@ -188,20 +275,51 @@
 
 
     /* =========================
+       曜日の文字色
+       ========================= */
+
+    /* 土曜日：青 */
+
+    .weekday-saturday {
+      color: #1677d2;
+      font-weight: bold !important;
+    }
+
+
+    /* 日曜日：赤 */
+
+    .weekday-sunday {
+      color: #e53935;
+      font-weight: bold !important;
+    }
+
+
+    /* 祝日：赤 */
+
+    .weekday-holiday {
+      color: #e53935;
+      font-weight: bold !important;
+    }
+
+
+    /* =========================
        検索ボタン
        ========================= */
 
     .search-button-area {
       text-align: center;
+
       margin-top: 25px;
     }
 
 
     .search-button {
       width: 70px;
+
       height: 70px;
 
       border: none;
+
       border-radius: 50%;
 
       background: #1677d2;
@@ -211,24 +329,30 @@
       position: relative;
 
       transition: 0.2s;
+
+      overflow: hidden;
     }
 
 
     .search-button:hover {
       background: #0e61ad;
+
       transform: scale(1.05);
     }
 
 
-    /* ○ */
+    /* =========================
+       虫めがね
+       ========================= */
 
     .search-button::before {
       content: "";
 
       position: absolute;
 
-      width: 25px;
-      height: 25px;
+      width: 24px;
+
+      height: 24px;
 
       border:
         4px solid white;
@@ -236,27 +360,27 @@
       border-radius: 50%;
 
       left: 18px;
+
       top: 17px;
     }
 
-
-    /* ＼ */
 
     .search-button::after {
       content: "";
 
       position: absolute;
 
-      width: 17px;
+      width: 15px;
+
       height: 4px;
 
       background: white;
 
-      transform:
-        rotate(45deg);
+      transform: rotate(45deg);
 
-      left: 40px;
-      top: 44px;
+      left: 39px;
+
+      top: 41px;
 
       border-radius: 3px;
     }
@@ -268,6 +392,7 @@
 
     #results {
       display: none;
+
       margin-top: 50px;
     }
 
@@ -463,10 +588,47 @@
 
 
     /* =========================
+       エラー
+       ========================= */
+
+    .data-error {
+      background: #fff0f0;
+
+      border:
+        2px solid #e53935;
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      color: #b71c1c;
+
+      text-align: center;
+    }
+
+
+    /* =========================
        スマホ
        ========================= */
 
     @media (max-width: 700px) {
+
+      header {
+        height: 120px;
+      }
+
+
+      header::after {
+        height: 30px;
+      }
+
+
+      .logo {
+        font-size: 26px;
+
+        margin-bottom: 24px;
+      }
+
 
       .search-row {
         grid-template-columns: 1fr;
@@ -749,98 +911,74 @@
 
 
           <label>
-
             <input
               type="checkbox"
               value="月"
             >
-
             月
-
           </label>
 
 
           <label>
-
             <input
               type="checkbox"
               value="火"
             >
-
             火
-
           </label>
 
 
           <label>
-
             <input
               type="checkbox"
               value="水"
             >
-
             水
-
           </label>
 
 
           <label>
-
             <input
               type="checkbox"
               value="木"
             >
-
             木
-
           </label>
 
 
           <label>
-
             <input
               type="checkbox"
               value="金"
             >
-
             金
-
           </label>
 
 
-          <label>
-
+          <label class="weekday-saturday">
             <input
               type="checkbox"
               value="土"
             >
-
             土
-
           </label>
 
 
-          <label>
-
+          <label class="weekday-sunday">
             <input
               type="checkbox"
               value="日"
             >
-
             日
-
           </label>
 
 
-          <label>
-
+          <label class="weekday-holiday">
             <input
               type="checkbox"
               value="祝"
             >
-
             祝
-
           </label>
 
 
@@ -908,17 +1046,14 @@
 
     const companiesByArea = {
 
-
       "北海道": [
         "JR北海道"
       ],
-
 
       "東北": [
         "JR東日本",
         "仙台市交通局"
       ],
-
 
       "関東甲信": [
         "JR東日本",
@@ -932,14 +1067,12 @@
         "都営地下鉄"
       ],
 
-
       "北陸": [
         "JR西日本",
         "IRいしかわ鉄道",
         "あいの風とやま鉄道",
         "ハピラインふくい"
       ],
-
 
       "東海4県": [
         "JR東海",
@@ -949,7 +1082,6 @@
         "静岡鉄道",
         "伊勢鉄道"
       ],
-
 
       "関西": [
         "JR西日本",
@@ -962,13 +1094,11 @@
         "山陽電鉄"
       ],
 
-
       "中国": [
         "JR西日本",
         "一畑電車",
         "広島電鉄"
       ],
-
 
       "四国": [
         "JR四国",
@@ -976,7 +1106,6 @@
         "伊予鉄道",
         "とさでん交通"
       ],
-
 
       "九州・沖縄": [
         "JR九州",
@@ -988,181 +1117,83 @@
     };
 
 
-
-    /* =========================
-       テスト用きっぷデータ
-       ========================= */
-
-    const tickets = [
-
-
-      {
-        name: "青空フリーパス",
-
-        companies: [
-          "JR東海",
-          "伊勢鉄道"
-        ],
-
-        area: "東海4県",
-
-        type: "フリーパス",
-
-        media: "紙",
-
-        weekdays: [
-          "土",
-          "日",
-          "祝"
-        ],
-
-        price: 2620,
-
-        description:
-          "JR東海の名古屋近郊と伊勢鉄道全線が乗り放題のきっぷです。",
-
-        tagDescription:
-          "土日祝日、年末年始",
-
-        officialUrl: "#"
-      },
-
-
-      {
-        name: "伊勢・鳥羽フリーきっぷ",
-
-        companies: [
-          "近鉄"
-        ],
-
-        area: "東海4県",
-
-        type: "フリーパス",
-
-        media: "紙",
-
-        weekdays: [
-          "土",
-          "日",
-          "祝"
-        ],
-
-        price: 2500,
-
-        description:
-          "伊勢・鳥羽周辺を自由に利用できるフリーきっぷです。",
-
-        tagDescription:
-          "土日祝日",
-
-        officialUrl: "#"
-      },
-
-
-      {
-        name: "東海おでかけパス",
-
-        companies: [
-          "JR東海"
-        ],
-
-        area: "東海4県",
-
-        type: "フリーパス",
-
-        media: "デジタル",
-
-        weekdays: [
-          "土",
-          "日",
-          "祝"
-        ],
-
-        price: 2720,
-
-        description:
-          "東海エリアのおでかけに利用できるきっぷです。",
-
-        tagDescription:
-          "土日祝日",
-
-        officialUrl: "#"
-      },
-
-
-      {
-        name: "関西おでかけフリーきっぷ",
-
-        companies: [
-          "阪急"
-        ],
-
-        area: "関西",
-
-        type: "フリーパス",
-
-        media: "デジタル",
-
-        weekdays: [
-          "土",
-          "日",
-          "祝"
-        ],
-
-        price: 1500,
-
-        description:
-          "関西のおでかけに利用できるフリーきっぷです。",
-
-        tagDescription:
-          "土日祝日",
-
-        officialUrl: "#"
-      }
-
-    ];
-
-
-
     /* =========================
        HTML要素
        ========================= */
 
     const areaSelect =
-      document.getElementById(
-        "area"
-      );
-
+      document.getElementById("area");
 
     const companySelect =
-      document.getElementById(
-        "company"
-      );
-
+      document.getElementById("company");
 
     const searchButton =
-      document.getElementById(
-        "searchButton"
-      );
-
+      document.getElementById("searchButton");
 
     const results =
-      document.getElementById(
-        "results"
-      );
-
+      document.getElementById("results");
 
     const resultCount =
-      document.getElementById(
-        "resultCount"
-      );
-
+      document.getElementById("resultCount");
 
     const resultList =
-      document.getElementById(
-        "resultList"
-      );
+      document.getElementById("resultList");
 
+
+    /* =========================
+       きっぷデータ
+       tickets.json を読み込む
+       ========================= */
+
+    let tickets = [];
+
+
+    async function loadTickets() {
+
+      try {
+
+        const response =
+          await fetch("./data/tickets.json");
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "きっぷデータを読み込めませんでした"
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        tickets =
+          data.tickets || [];
+
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        resultList.innerHTML = `
+
+          <div class="data-error">
+
+            きっぷデータを読み込めませんでした。<br>
+            data/tickets.json が正しく配置されているか確認してください。
+
+          </div>
+
+        `;
+
+        results.style.display = "block";
+
+      }
+
+    }
 
 
     /* =========================
@@ -1173,32 +1204,18 @@
       "change",
       function() {
 
-
         const selectedArea =
           this.value;
 
 
-        /*
-         * 社局の選択肢をリセット
-         */
+        companySelect.innerHTML = "";
 
-        companySelect.innerHTML =
-          "";
-
-
-        /*
-         * 指定なし
-         */
 
         const noneOption =
-          document.createElement(
-            "option"
-          );
+          document.createElement("option");
 
 
-        noneOption.value =
-          "";
-
+        noneOption.value = "";
 
         noneOption.textContent =
           "指定なし";
@@ -1209,17 +1226,13 @@
         );
 
 
-
         /*
          * エリア未指定
          *
          * 全社局を表示
          */
 
-        if (
-          selectedArea === ""
-        ) {
-
+        if (selectedArea === "") {
 
           const allCompanies =
             new Set();
@@ -1229,7 +1242,6 @@
             companiesByArea
           ).forEach(
             companies => {
-
 
               companies.forEach(
                 company => {
@@ -1251,7 +1263,6 @@
             .sort()
             .forEach(
               company => {
-
 
                 const option =
                   document.createElement(
@@ -1276,14 +1287,12 @@
 
 
           return;
-        }
 
+        }
 
 
         /*
          * エリア指定あり
-         *
-         * そのエリアの社局だけ表示
          */
 
         const companies =
@@ -1294,7 +1303,6 @@
 
         companies.forEach(
           company => {
-
 
             const option =
               document.createElement(
@@ -1321,7 +1329,6 @@
     );
 
 
-
     /* =========================
        検索
        ========================= */
@@ -1332,29 +1339,16 @@
     );
 
 
-
     function searchTickets() {
 
-
-      /*
-       * エリア
-       */
 
       const area =
         areaSelect.value;
 
 
-      /*
-       * 社局
-       */
-
       const company =
         companySelect.value;
 
-
-      /*
-       * きっぷ種類
-       */
 
       const ticketType =
         document.getElementById(
@@ -1362,20 +1356,11 @@
         ).value;
 
 
-      /*
-       * 媒体
-       */
-
       const media =
         document.getElementById(
           "media"
         ).value;
 
-
-
-      /*
-       * 曜日
-       */
 
       const selectedWeekdays =
         [
@@ -1383,10 +1368,8 @@
             ".weekday-list input:checked"
           )
         ].map(
-          input =>
-            input.value
+          input => input.value
         );
-
 
 
       /* =========================
@@ -1404,13 +1387,12 @@
 
             if (
               area !== "" &&
-              ticket.area !== area
+              !ticket.areas.includes(area)
             ) {
 
               return false;
 
             }
-
 
 
             /*
@@ -1429,7 +1411,6 @@
             }
 
 
-
             /*
              * きっぷ種類
              */
@@ -1444,14 +1425,13 @@
             }
 
 
-
             /*
              * 媒体
              */
 
             if (
               media !== "" &&
-              ticket.media !== media
+              ticket.medium !== media
             ) {
 
               return false;
@@ -1459,18 +1439,19 @@
             }
 
 
-
             /*
              * 曜日
+             *
+             * 選択した曜日を
+             * 全部満たす必要がある
              */
 
             if (
               selectedWeekdays.length > 0
             ) {
 
-
               const matches =
-                selectedWeekdays.some(
+                selectedWeekdays.every(
                   day =>
                     ticket.weekdays.includes(
                       day
@@ -1487,12 +1468,10 @@
             }
 
 
-
             return true;
 
           }
         );
-
 
 
       /* =========================
@@ -1507,9 +1486,7 @@
         `${filteredTickets.length}件のきっぷが見つかりました`;
 
 
-      resultList.innerHTML =
-        "";
-
+      resultList.innerHTML = "";
 
 
       /* =========================
@@ -1519,7 +1496,6 @@
       if (
         filteredTickets.length === 0
       ) {
-
 
         resultList.innerHTML = `
 
@@ -1536,7 +1512,6 @@
         return;
 
       }
-
 
 
       /* =========================
@@ -1557,7 +1532,6 @@
             "ticket-card";
 
 
-
           /*
            * 社局タグ
            */
@@ -1565,7 +1539,7 @@
           const companyTags =
             ticket.companies
               .map(
-                company => `
+                (company, index) => `
 
                   <span
                     class="ticket-tag company-tag"
@@ -1578,6 +1552,13 @@
               .join("");
 
 
+          /*
+           * 曜日表示
+           */
+
+          const weekdayText =
+            ticket.weekdays.join("・");
+
 
           /*
            * カード内容
@@ -1585,11 +1566,9 @@
 
           card.innerHTML = `
 
-
             <div class="ticket-tags">
 
               ${companyTags}
-
 
               <span
                 class="ticket-tag type-tag"
@@ -1597,21 +1576,18 @@
                 ${ticket.type}
               </span>
 
-
               <span
                 class="ticket-tag weekday-tag"
               >
-                ${ticket.tagDescription}
+                ${weekdayText}
               </span>
 
             </div>
 
 
-
             <div
               class="ticket-title-row"
             >
-
 
               <div
                 class="ticket-name"
@@ -1623,12 +1599,10 @@
               <div
                 class="ticket-price"
               >
-                ¥${ticket.price.toLocaleString()}
+                ¥${ticket.price.adult.toLocaleString()}
               </div>
 
-
             </div>
-
 
 
             <div
@@ -1638,16 +1612,19 @@
             </div>
 
 
-
             <div
               class="ticket-details"
             >
 
               媒体：
-              ${ticket.media}
+              ${ticket.medium}
+
+              <br>
+
+              利用エリア：
+              ${ticket.usageArea}
 
             </div>
-
 
 
             <a
@@ -1664,7 +1641,6 @@
 
             </a>
 
-
           `;
 
 
@@ -1678,10 +1654,11 @@
     }
 
 
-    /*
-     * ページを開いた直後は
-     * 検索結果を表示しない
-     */
+    /* =========================
+       ページ読み込み時
+       ========================= */
+
+    loadTickets();
 
 
   </script>
