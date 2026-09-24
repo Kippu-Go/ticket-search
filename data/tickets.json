@@ -1,0 +1,146 @@
+{
+  "tickets": [
+    {
+      "id": "kippu-0001",
+      "name": "青空フリーパス",
+      "companies": [
+        "JR東海",
+        "伊勢鉄道"
+      ],
+      "areas": [
+        "東海4県"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 2620,
+        "child": null
+      },
+      "weekdays": [
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "JR東海の名古屋近郊と伊勢鉄道全線",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "JR東海の名古屋近郊と伊勢鉄道全線が乗り放題のきっぷです。",
+      "notes": [],
+      "officialUrl": "#",
+      "lastChecked": "2026-09-25"
+    },
+    {
+      "id": "kippu-0002",
+      "name": "伊勢・鳥羽フリーきっぷ",
+      "companies": [
+        "近鉄"
+      ],
+      "areas": [
+        "東海4県"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 2500,
+        "child": null
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "伊勢・鳥羽周辺",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "伊勢・鳥羽周辺を自由に利用できるフリーきっぷです。",
+      "notes": [],
+      "officialUrl": "#",
+      "lastChecked": "2026-09-25"
+    },
+    {
+      "id": "kippu-0003",
+      "name": "東海おでかけパス",
+      "companies": [
+        "JR東海"
+      ],
+      "areas": [
+        "東海4県"
+      ],
+      "type": "フリーパス",
+      "medium": "デジタル",
+      "price": {
+        "adult": 2720,
+        "child": null
+      },
+      "weekdays": [
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "東海エリア",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "東海エリアのおでかけに利用できるきっぷです。",
+      "notes": [],
+      "officialUrl": "#",
+      "lastChecked": "2026-09-25"
+    },
+    {
+      "id": "kippu-0004",
+      "name": "関西おでかけフリーきっぷ",
+      "companies": [
+        "阪急"
+      ],
+      "areas": [
+        "関西"
+      ],
+      "type": "フリーパス",
+      "medium": "デジタル",
+      "price": {
+        "adult": 1500,
+        "child": null
+      },
+      "weekdays": [
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "関西エリア",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "関西のおでかけに利用できるフリーきっぷです。",
+      "notes": [],
+      "officialUrl": "#",
+      "lastChecked": "2026-09-25"
+    }
+  ]
+}
