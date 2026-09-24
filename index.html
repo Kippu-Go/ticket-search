@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kippu-Go｜お得なきっぷ検索</title>
+
+  <style>
+    /* =========================
+       全体
+    ========================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+      background: #f7fbfd;
+      color: #222;
+    }
+
+    /* =========================
+       ヘッダー
+    ========================= */
+    header {
+      background: #4bb3e6;
+      color: white;
+      padding: 22px 30px;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* =========================
+       メイン
+    ========================= */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 55px 25px 80px;
+    }
+
+    .welcome {
+      text-align: center;
+      font-size: 42px;
+      margin: 0 0 70px;
+      font-weight: bold;
+    }
+
+    .search-title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    /* =========================
+       検索エリア
+    ========================= */
+    .search-box {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 15px;
+      align-items: end;
+    }
+
+    .form-item label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    select,
+    input[type="date"] {
+      width: 100%;
+      height: 58px;
+      border: none;
+      border-radius: 8px;
+      background: #54b8e7;
+      padding: 0 16px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+      cursor: pointer;
+    }
+
+    /* =========================
+       検索ボタン
+    ========================= */
+    .search-button {
+      height: 58px;
+      width: 90px;
+      border: none;
+      border-radius: 8px;
+      background: #54b8e7;
+      font-size: 30px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .search-button:hover {
+      transform: translateY(-2px);
+      background: #3da9dc;
+    }
+
+    .search-button:active {
+      transform: translateY(0);
+    }
+
+    /* =========================
+       曜日
+    ========================= */
+    .weekday-box {
+      margin-top: 25px;
+      background: #54b8e7;
+      border-radius: 15px;
+      padding: 17px 20px;
+      text-align: center;
+    }
+
+    .weekday-title {
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .weekday-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .weekday-item {
+      background: white;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .weekday-item input {
+      margin-right: 5px;
+    }
+
+    /* =========================
+       検索結果
+    ========================= */
+    #results-area {
+      margin-top: 55px;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .result-header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    #result-count {
+      color: #555;
+    }
+
+    .tickets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .ticket-card {
+      background: white;
+      border-radius: 15px;
+      padding: 23px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .ticket-card h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .ticket-info {
+      line-height: 1.8;
+      color: #444;
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 21px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .detail-button {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #54b8e7;
+      color: #111;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .detail-button:hover {
+      background: #3da9dc;
+    }
+
+    .no-results {
+      background: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 15px;
+    }
+
+    /* =========================
+       スマホ対応
+    ========================= */
+    @media (max-width: 800px) {
+
+      .welcome {
+        font-size: 30px;
+        margin-bottom: 45px;
+      }
+
+      .search-title {
+        font-size: 23px;
+      }
+
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+
+      .search-button {
+        width: 100%;
+      }
+
+      .tickets {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        padding: 40px 15px 60px;
+      }
+
+      .search-box {
+        padding: 20px;
+      }
+
+      header {
+        padding: 18px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">🚃 Kippu-Go</div>
+    </div>
+  </header>
+
+  <!-- メイン -->
+  <main>
+
+    <h1 class="welcome">きっぷGOへようこそ！</h1>
+
+    <h2 class="search-title">お得なきっぷを検索する</h2>
+
+    <!-- 検索ボックス -->
+    <section class="search-box">
+
+      <div class="search-row">
+
+        <!-- 地域 -->
+        <div class="form-item">
+          <label for="region">地域・都道府県</label>
+
+          <select id="region">
+            <option value="">指定なし</option>
+            <option value="北海道">北海道</option>
+            <option value="東北">東北</option>
+            <option value="関東">関東</option>
+            <option value="北陸">北陸</option>
+            <option value="甲信">甲信</option>
+            <option value="東海">東海</option>
+            <option value="近畿">近畿</option>
+            <option value="中国">中国</option>
+            <option value="四国">四国</option>
+            <option value="九州">九州</option>
+          </select>
+        </div>
+
+        <!-- 鉄道会社 -->
+        <div class="form-item">
+          <label for="company">鉄道会社</label>
+
+          <select id="company">
+            <option value="">指定なし</option>
+            <option value="JR東海">JR東海</option>
+            <option value="近鉄">近鉄</option>
+            <option value="阪急">阪急</option>
+            <option value="阪神">阪神</option>
+            <option value="南海">南海</option>
+            <option value="京阪">京阪</option>
+          </select>
+        </div>
+
+        <!-- 利用日 -->
+        <div class="form-item">
+          <label for="date">利用日</label>
+
+          <input type="date" id="date">
+        </div>
+
+        <!-- 検索ボタン -->
+        <button class="search-button" onclick="searchTickets()" aria-label="検索">
+          🔍
+        </button>
+
+      </div>
+
+      <!-- 曜日 -->
+      <div class="weekday-box">
+
+        <div class="weekday-title">
+          曜日を選択
+        </div>
+
+        <div class="weekday-list">
+
+          <label class="weekday-item">
+            <input type="checkbox" value="月">
+            月
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="火">
+            火
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="水">
+            水
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="木">
+            木
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="金">
+            金
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="土">
+            土
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="日">
+            日
+          </label>
+
+          <label class="weekday-item">
+            <input type="checkbox" value="祝">
+            祝
+          </label>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 検索結果 -->
+    <section id="results-area">
+
+      <div class="result-header">
+        <h2>検索結果</h2>
+        <span id="result-count"></span>
+      </div>
+
+      <div id="tickets" class="tickets"></div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    /*
+      ========================================
+      Kippu-Go 仮データ
+      ========================================
+
+      今はテスト用のデータ。
+
+      将来的には、この部分を
+      tickets.json に移す予定。
+    */
+
+    const tickets = [
+
+      {
+        name: "伊勢・鳥羽フリーきっぷ",
+        company: "近鉄",
+        region: "東海",
+        price: 2500,
+        startDate: "2026-04-01",
+        endDate: "2027-03-31",
+        weekdays: ["土", "日", "祝"],
+        description: "伊勢・鳥羽エリアをお得に巡るためのフリーきっぷです。",
+        url: "https://www.kintetsu.co.jp/"
+      },
+
+      {
+        name: "東海おでかけパス",
+        company: "JR東海",
+        region: "東海",
+        price: 2720,
+        startDate: "2026-04-01",
+        endDate: "2027-03-31",
+        weekdays: ["土", "日", "祝"],
+        description: "休日のお出かけに利用できるきっぷです。",
+        url: "https://railway.jr-central.co.jp/"
+      },
+
+      {
+        name: "関西おでかけフリーきっぷ",
+        company: "阪急",
+        region: "近畿",
+        price: 1500,
+        startDate: "2026-04-01",
+        endDate: "2027-03-31",
+        weekdays: ["土", "日"],
+        description: "関西エリアのお出かけに便利なきっぷです。",
+        url: "https://www.hankyu.co.jp/"
+      },
+
+      {
+        name: "近畿ワンデーパス",
+        company: "近鉄",
+        region: "近畿",
+        price: 1800,
+        startDate: "2026-04-01",
+        endDate: "2027-03-31",
+        weekdays: ["月", "火", "水", "木", "金", "土", "日", "祝"],
+        description: "近畿エリアを1日自由に楽しめるきっぷです。",
+        url: "https://www.kintetsu.co.jp/"
+      }
+
+    ];
+
+
+    /*
+      ========================================
+      検索処理
+      ========================================
+    */
+
+    function searchTickets() {
+
+      const selectedRegion =
+        document.getElementById("region").value;
+
+      const selectedCompany =
+        document.getElementById("company").value;
+
+      const selectedDate =
+        document.getElementById("date").value;
+
+
+      /*
+        選択された曜日を取得
+      */
+
+      const selectedWeekdays =
+        Array.from(
+          document.querySelectorAll(
+            ".weekday-item input:checked"
+          )
+        ).map(
+          checkbox => checkbox.value
+        );
+
+
+      /*
+        日付から曜日を取得
+      */
+
+      let dateWeekday = null;
+
+      if (selectedDate !== "") {
+
+        const date = new Date(
+          selectedDate + "T00:00:00"
+        );
+
+        const weekdays = [
+          "日",
+          "月",
+          "火",
+          "水",
+          "木",
+          "金",
+          "土"
+        ];
+
+        dateWeekday = weekdays[date.getDay()];
+      }
+
+
+      /*
+        条件に合うきっぷを探す
+      */
+
+      const results = tickets.filter(ticket => {
+
+        // 地域が指定されている場合
+        if (
+          selectedRegion !== "" &&
+          ticket.region !== selectedRegion
+        ) {
+          return false;
+        }
+
+
+        // 会社が指定されている場合
+        if (
+          selectedCompany !== "" &&
+          ticket.company !== selectedCompany
+        ) {
+          return false;
+        }
+
+
+        // 利用日が指定されている場合
+        if (selectedDate !== "") {
+
+          if (
+            selectedDate < ticket.startDate ||
+            selectedDate > ticket.endDate
+          ) {
+            return false;
+          }
+
+          /*
+            指定日の曜日が、
+            そのきっぷの利用可能曜日に
+            含まれているか確認
+          */
+
+          if (
+            !ticket.weekdays.includes(dateWeekday) &&
+            !ticket.weekdays.includes("祝")
+          ) {
+            return false;
+          }
+        }
+
+
+        /*
+          曜日チェックボックスが
+          1つ以上選ばれている場合
+        */
+
+        if (selectedWeekdays.length > 0) {
+
+          const matches =
+            selectedWeekdays.some(
+              weekday =>
+                ticket.weekdays.includes(weekday)
+            );
+
+          if (!matches) {
+            return false;
+          }
+        }
+
+
+        return true;
+
+      });
+
+
+      /*
+        結果を表示
+      */
+
+      displayResults(results);
+
+    }
+
+
+    /*
+      ========================================
+      検索結果を画面に表示
+      ========================================
+    */
+
+    function displayResults(results) {
+
+      const container =
+        document.getElementById("tickets");
+
+      const count =
+        document.getElementById("result-count");
+
+
+      count.textContent =
+        `${results.length}件`;
+
+
+      /*
+        0件の場合
+      */
+
+      if (results.length === 0) {
+
+        container.innerHTML = `
+          <div class="no-results">
+            条件に一致するきっぷが見つかりませんでした。
+          </div>
+        `;
+
+        return;
+      }
+
+
+      /*
+        きっぷをカードとして表示
+      */
+
+      container.innerHTML =
+        results.map(ticket => {
+
+          return `
+
+            <article class="ticket-card">
+
+              <h3>
+                ${ticket.name}
+              </h3>
+
+              <div class="ticket-info">
+
+                <div>
+                  🚃 ${ticket.company}
+                </div>
+
+                <div>
+                  📍 ${ticket.region}
+                </div>
+
+                <div>
+                  📅 ${ticket.startDate}
+                  ～ ${ticket.endDate}
+                </div>
+
+                <div>
+                  利用可能曜日：
+                  ${ticket.weekdays.join("・")}
+                </div>
+
+              </div>
+
+              <div class="price">
+                ${ticket.price.toLocaleString()}円
+              </div>
+
+              <div class="ticket-info">
+                ${ticket.description}
+              </div>
+
+              <br>
+
+              <a
+                class="detail-button"
+                href="${ticket.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                公式サイトを見る →
+              </a>
+
+            </article>
+
+          `;
+
+        }).join("");
+
+    }
+
+
+    /*
+      ========================================
+      最初の画面
+      ========================================
+
+      最初は何も条件を指定していないので、
+      登録されているきっぷを全部表示。
+    */
+
+    searchTickets();
+
+  </script>
+
+</body>
+</html>
