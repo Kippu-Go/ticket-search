@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>きっぷGO</title>
+  <title>きっぷゴー</title>
 
   <style>
     * {
@@ -47,6 +47,7 @@
       font-size: 32px;
       margin-bottom: 45px;
       color: #1265b5;
+      font-weight: bold;
     }
 
     h2 {
@@ -88,11 +89,6 @@
       border-radius: 8px;
       background: white;
       font-size: 15px;
-    }
-
-    select:disabled {
-      background: #eeeeee;
-      color: #999;
     }
 
     /* 追加項目 */
@@ -182,68 +178,125 @@
       border-radius: 3px;
     }
 
-    /* 検索結果 */
+    /* ====================================
+       検索結果
+       ==================================== */
+
     #results {
       display: none;
-      margin-top: 45px;
+      margin-top: 50px;
     }
 
     .result-count {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-weight: bold;
+      font-size: 17px;
     }
 
+    /* きっぷカード */
     .ticket-card {
       background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
-      border-left: 5px solid #1677d2;
+      border: 3px solid #222;
+      border-radius: 35px;
+      padding: 45px 55px 38px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    /* タグ */
+    .ticket-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 50px;
+    }
+
+    .ticket-tag {
+      color: white;
+      padding: 18px 25px;
+      border-radius: 14px;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .company-tag {
+      background: #f28c00;
+    }
+
+    .company-tag:nth-child(2) {
+      background: #315bea;
+    }
+
+    .type-tag {
+      background: #62c45d;
+    }
+
+    .weekday-tag {
+      background: #ee4d40;
+    }
+
+    /* きっぷ名 */
+    .ticket-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 35px;
     }
 
     .ticket-name {
-      font-size: 20px;
+      font-size: 56px;
       font-weight: bold;
-      color: #1265b5;
-      margin-bottom: 10px;
+      line-height: 1.2;
+      color: #111;
     }
 
-    .ticket-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7px 20px;
-      font-size: 14px;
-      margin-bottom: 12px;
+    .ticket-price {
+      font-size: 38px;
+      white-space: nowrap;
     }
 
+    /* 説明 */
     .ticket-description {
-      margin-top: 10px;
-      line-height: 1.6;
+      font-size: 21px;
+      line-height: 1.7;
+      margin-bottom: 40px;
     }
 
+    /* 詳細 */
+    .ticket-details {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    /* 公式サイト */
     .official-link {
       display: inline-block;
-      margin-top: 12px;
-      color: #1677d2;
-      text-decoration: none;
-      font-weight: bold;
+      color: #555;
+      font-size: 19px;
+      text-decoration: underline;
+      font-weight: normal;
     }
 
     .official-link:hover {
-      text-decoration: underline;
+      color: #1677d2;
     }
 
+    /* 0件 */
     .no-result {
       background: white;
-      padding: 25px;
+      padding: 30px;
       text-align: center;
-      border-radius: 12px;
+      border-radius: 15px;
       color: #666;
     }
 
     /* スマホ */
     @media (max-width: 700px) {
+
       .search-row {
         grid-template-columns: 1fr;
       }
@@ -256,8 +309,37 @@
         font-size: 26px;
       }
 
-      .ticket-info {
-        grid-template-columns: 1fr;
+      .ticket-card {
+        padding: 25px 20px 25px;
+        border-radius: 25px;
+      }
+
+      .ticket-tags {
+        gap: 8px;
+        margin-bottom: 30px;
+      }
+
+      .ticket-tag {
+        font-size: 15px;
+        padding: 10px 13px;
+        border-radius: 9px;
+      }
+
+      .ticket-title-row {
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .ticket-name {
+        font-size: 34px;
+      }
+
+      .ticket-price {
+        font-size: 25px;
+      }
+
+      .ticket-description {
+        font-size: 16px;
       }
     }
   </style>
@@ -266,13 +348,13 @@
 <body>
 
 <header>
-  <div class="logo">きっぷGO</div>
+  <div class="logo">きっぷゴー</div>
 </header>
 
 <main>
 
   <div class="welcome">
-    きっぷGOへようこそ！
+    きっぷゴーへようこそ！
   </div>
 
   <h2>お得なきっぷを検索する</h2>
@@ -338,9 +420,13 @@
 
     <!-- 曜日 -->
     <div class="weekday-area">
-      <div class="weekday-title">利用できる曜日</div>
+
+      <div class="weekday-title">
+        利用できる曜日
+      </div>
 
       <div class="weekday-list">
+
         <label>
           <input type="checkbox" value="月">月
         </label>
@@ -372,16 +458,19 @@
         <label>
           <input type="checkbox" value="祝">祝
         </label>
+
       </div>
     </div>
 
     <!-- 検索ボタン -->
     <div class="search-button-area">
+
       <button
         class="search-button"
         id="searchButton"
         aria-label="検索"
       ></button>
+
     </div>
 
   </div>
@@ -403,12 +492,10 @@
 
 <script>
 
-  /*
-   * 社局とエリアの対応
-   *
-   * 今後きっぷのデータを増やすときは、
-   * ここに社局を追加していけばOK。
-   */
+  /* ====================================
+     エリア → 社局
+     ==================================== */
+
   const companiesByArea = {
 
     "北海道": [
@@ -444,7 +531,8 @@
       "名古屋鉄道",
       "近鉄",
       "名古屋市交通局",
-      "静岡鉄道"
+      "静岡鉄道",
+      "伊勢鉄道"
     ],
 
     "関西": [
@@ -477,262 +565,424 @@
       "福岡市地下鉄",
       "沖縄都市モノレール"
     ]
+
   };
 
 
-  /*
-   * テスト用きっぷデータ
-   *
-   * 実際のデータを入れるときは、
-   * この部分を増やしていけばOK。
-   */
+  /* ====================================
+     テスト用きっぷデータ
+     ==================================== */
+
   const tickets = [
 
     {
-      name: "伊勢・鳥羽フリーきっぷ",
-      company: "近鉄",
+      name: "青空フリーパス",
+
+      companies: [
+        "JR東海",
+        "伊勢鉄道"
+      ],
+
       area: "東海4県",
+
       type: "フリーパス",
+
       media: "紙",
+
       validFrom: "2026-04-01",
+
       validTo: "2027-03-31",
-      weekdays: ["土", "日", "祝"],
-      price: 2500,
-      description: "伊勢・鳥羽周辺を自由に利用できるフリーきっぷです。",
+
+      weekdays: [
+        "土",
+        "日",
+        "祝"
+      ],
+
+      price: 2620,
+
+      description:
+        "JR東海の名古屋近郊と伊勢鉄道全線が乗り放題のきっぷです。",
+
+      tagDescription:
+        "土日祝日、年末年始",
+
       officialUrl: "#"
     },
+
+
+    {
+      name: "伊勢・鳥羽フリーきっぷ",
+
+      companies: [
+        "近鉄"
+      ],
+
+      area: "東海4県",
+
+      type: "フリーパス",
+
+      media: "紙",
+
+      validFrom: "2026-04-01",
+
+      validTo: "2027-03-31",
+
+      weekdays: [
+        "土",
+        "日",
+        "祝"
+      ],
+
+      price: 2500,
+
+      description:
+        "伊勢・鳥羽周辺を自由に利用できるフリーきっぷです。",
+
+      tagDescription:
+        "土日祝日",
+
+      officialUrl: "#"
+    },
+
 
     {
       name: "東海おでかけパス",
-      company: "JR東海",
+
+      companies: [
+        "JR東海"
+      ],
+
       area: "東海4県",
+
       type: "フリーパス",
+
       media: "デジタル",
+
       validFrom: "2026-04-01",
+
       validTo: "2027-03-31",
-      weekdays: ["土", "日", "祝"],
+
+      weekdays: [
+        "土",
+        "日",
+        "祝"
+      ],
+
       price: 2720,
-      description: "東海エリアのおでかけに利用できるきっぷです。",
+
+      description:
+        "東海エリアのおでかけに利用できるきっぷです。",
+
+      tagDescription:
+        "土日祝日",
+
       officialUrl: "#"
     },
+
 
     {
       name: "関西おでかけフリーきっぷ",
-      company: "阪急",
-      area: "関西",
-      type: "フリーパス",
-      media: "デジタル",
-      validFrom: "2026-04-01",
-      validTo: "2027-03-31",
-      weekdays: ["土", "日", "祝"],
-      price: 1500,
-      description: "関西のおでかけに利用できるフリーきっぷです。",
-      officialUrl: "#"
-    },
 
-    {
-      name: "近畿ワンデーパス",
-      company: "近鉄",
+      companies: [
+        "阪急"
+      ],
+
       area: "関西",
+
       type: "フリーパス",
-      media: "紙",
+
+      media: "デジタル",
+
       validFrom: "2026-04-01",
+
       validTo: "2027-03-31",
-      weekdays: ["土", "日", "祝"],
-      price: 1800,
-      description: "近畿エリアの移動に利用できるきっぷです。",
+
+      weekdays: [
+        "土",
+        "日",
+        "祝"
+      ],
+
+      price: 1500,
+
+      description:
+        "関西のおでかけに利用できるフリーきっぷです。",
+
+      tagDescription:
+        "土日祝日",
+
       officialUrl: "#"
     }
 
   ];
 
 
-  const areaSelect = document.getElementById("area");
-  const companySelect = document.getElementById("company");
-  const searchButton = document.getElementById("searchButton");
+  const areaSelect =
+    document.getElementById("area");
 
-  const results = document.getElementById("results");
-  const resultCount = document.getElementById("resultCount");
-  const resultList = document.getElementById("resultList");
+  const companySelect =
+    document.getElementById("company");
+
+  const searchButton =
+    document.getElementById("searchButton");
+
+  const results =
+    document.getElementById("results");
+
+  const resultCount =
+    document.getElementById("resultCount");
+
+  const resultList =
+    document.getElementById("resultList");
 
 
-  /*
-   * エリア変更時
-   * ↓
-   * そのエリアに対応する社局だけ表示
-   */
-  areaSelect.addEventListener("change", function() {
+  /* ====================================
+     エリア変更
+     ==================================== */
 
-    const selectedArea = this.value;
+  areaSelect.addEventListener(
+    "change",
+    function() {
 
-    companySelect.innerHTML = "";
+      const selectedArea =
+        this.value;
 
-    // エリア未指定
-    if (selectedArea === "") {
+      companySelect.innerHTML = "";
 
-      const option = document.createElement("option");
-      option.value = "";
-      option.textContent = "指定なし";
 
-      companySelect.appendChild(option);
+      /*
+       * エリア未指定
+       */
+      if (selectedArea === "") {
 
-      // 現在登録されている社局を全部表示
-      const allCompanies = new Set();
+        const noneOption =
+          document.createElement("option");
 
-      Object.values(companiesByArea).forEach(companies => {
-        companies.forEach(company => {
-          allCompanies.add(company);
+        noneOption.value = "";
+
+        noneOption.textContent =
+          "指定なし";
+
+        companySelect.appendChild(
+          noneOption
+        );
+
+
+        const allCompanies =
+          new Set();
+
+        Object.values(
+          companiesByArea
+        ).forEach(companies => {
+
+          companies.forEach(company => {
+
+            allCompanies.add(
+              company
+            );
+
+          });
+
         });
+
+
+        [...allCompanies]
+          .sort()
+          .forEach(company => {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+            option.value =
+              company;
+
+            option.textContent =
+              company;
+
+            companySelect.appendChild(
+              option
+            );
+
+          });
+
+        return;
+      }
+
+
+      /*
+       * エリア指定あり
+       */
+      const noneOption =
+        document.createElement("option");
+
+      noneOption.value = "";
+
+      noneOption.textContent =
+        "指定なし";
+
+      companySelect.appendChild(
+        noneOption
+      );
+
+
+      const companies =
+        companiesByArea[
+          selectedArea
+        ] || [];
+
+
+      companies.forEach(company => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          company;
+
+        option.textContent =
+          company;
+
+        companySelect.appendChild(
+          option
+        );
+
       });
 
-      [...allCompanies].sort().forEach(company => {
-
-        const option = document.createElement("option");
-
-        option.value = company;
-        option.textContent = company;
-
-        companySelect.appendChild(option);
-
-      });
-
-      return;
     }
+  );
 
 
-    // 指定されたエリアの社局だけ表示
-    const companies = companiesByArea[selectedArea] || [];
+  /* ====================================
+     検索
+     ==================================== */
 
-    const noneOption = document.createElement("option");
-    noneOption.value = "";
-    noneOption.textContent = "指定なし";
-
-    companySelect.appendChild(noneOption);
-
-
-    companies.forEach(company => {
-
-      const option = document.createElement("option");
-
-      option.value = company;
-      option.textContent = company;
-
-      companySelect.appendChild(option);
-
-    });
-
-  });
-
-
-  /*
-   * 検索
-   */
-  searchButton.addEventListener("click", searchTickets);
+  searchButton.addEventListener(
+    "click",
+    searchTickets
+  );
 
 
   function searchTickets() {
 
-    const area = areaSelect.value;
-    const company = companySelect.value;
+    const area =
+      areaSelect.value;
 
-    const date = document.getElementById("date").value;
+    const company =
+      companySelect.value;
+
+    const date =
+      document.getElementById(
+        "date"
+      ).value;
 
     const ticketType =
-      document.getElementById("ticketType").value;
+      document.getElementById(
+        "ticketType"
+      ).value;
 
     const media =
-      document.getElementById("media").value;
+      document.getElementById(
+        "media"
+      ).value;
 
 
-    // 選択された曜日
-    const selectedWeekdays = [
-      ...document.querySelectorAll(
-        ".weekday-list input:checked"
-      )
-    ].map(input => input.value);
+    const selectedWeekdays =
+      [
+        ...document.querySelectorAll(
+          ".weekday-list input:checked"
+        )
+      ].map(
+        input => input.value
+      );
 
 
     /*
-     * 条件に合うきっぷだけ残す
+     * 条件で絞り込み
      */
-    const filteredTickets = tickets.filter(ticket => {
+    const filteredTickets =
+      tickets.filter(ticket => {
 
-      // エリア
-      if (
-        area !== "" &&
-        ticket.area !== area
-      ) {
-        return false;
-      }
-
-
-      // 社局
-      if (
-        company !== "" &&
-        ticket.company !== company
-      ) {
-        return false;
-      }
-
-
-      // きっぷの種類
-      if (
-        ticketType !== "" &&
-        ticket.type !== ticketType
-      ) {
-        return false;
-      }
-
-
-      // 媒体
-      if (
-        media !== "" &&
-        ticket.media !== media
-      ) {
-        return false;
-      }
-
-
-      // 利用日
-      if (date !== "") {
 
         if (
-          date < ticket.validFrom ||
-          date > ticket.validTo
+          area !== "" &&
+          ticket.area !== area
         ) {
           return false;
         }
 
-      }
 
-
-      // 曜日
-      if (selectedWeekdays.length > 0) {
-
-        const matchesWeekday =
-          selectedWeekdays.some(day =>
-            ticket.weekdays.includes(day)
-          );
-
-        if (!matchesWeekday) {
+        if (
+          company !== "" &&
+          !ticket.companies.includes(
+            company
+          )
+        ) {
           return false;
         }
 
-      }
+
+        if (
+          ticketType !== "" &&
+          ticket.type !== ticketType
+        ) {
+          return false;
+        }
 
 
-      return true;
+        if (
+          media !== "" &&
+          ticket.media !== media
+        ) {
+          return false;
+        }
 
-    });
+
+        if (date !== "") {
+
+          if (
+            date < ticket.validFrom ||
+            date > ticket.validTo
+          ) {
+            return false;
+          }
+
+        }
+
+
+        if (
+          selectedWeekdays.length > 0
+        ) {
+
+          const matches =
+            selectedWeekdays.some(
+              day =>
+                ticket.weekdays.includes(
+                  day
+                )
+            );
+
+          if (!matches) {
+            return false;
+          }
+
+        }
+
+
+        return true;
+
+      });
 
 
     /*
      * 検索結果を表示
-     *
-     * 初回はdisplay:noneなので、
-     * 検索ボタンを押したときに初めて表示される。
      */
-    results.style.display = "block";
+    results.style.display =
+      "block";
 
 
     resultCount.textContent =
@@ -742,8 +992,12 @@
     resultList.innerHTML = "";
 
 
-    // 0件
-    if (filteredTickets.length === 0) {
+    /*
+     * 0件
+     */
+    if (
+      filteredTickets.length === 0
+    ) {
 
       resultList.innerHTML = `
         <div class="no-result">
@@ -752,84 +1006,114 @@
       `;
 
       return;
+
     }
 
 
-    // 結果表示
-    filteredTickets.forEach(ticket => {
+    /*
+     * カード作成
+     */
+    filteredTickets.forEach(
+      ticket => {
 
-      const card = document.createElement("div");
+        const card =
+          document.createElement(
+            "div"
+          );
 
-      card.className = "ticket-card";
+        card.className =
+          "ticket-card";
 
 
-      card.innerHTML = `
+        /*
+         * 社局タグ
+         */
+        const companyTags =
+          ticket.companies
+            .map(
+              company =>
+                `<span class="ticket-tag company-tag">
+                  ${company}
+                </span>`
+            )
+            .join("");
 
-        <div class="ticket-name">
-          ${ticket.name}
-        </div>
 
-        <div class="ticket-info">
+        /*
+         * カード
+         */
+        card.innerHTML = `
 
-          <div>
-            <strong>社局：</strong>
-            ${ticket.company}
+          <div class="ticket-tags">
+
+            ${companyTags}
+
+            <span class="ticket-tag type-tag">
+              ${ticket.type}
+            </span>
+
+            <span class="ticket-tag weekday-tag">
+              ${ticket.tagDescription}
+            </span>
+
           </div>
 
-          <div>
-            <strong>エリア：</strong>
-            ${ticket.area}
+
+          <div class="ticket-title-row">
+
+            <div class="ticket-name">
+              ${ticket.name}
+            </div>
+
+            <div class="ticket-price">
+              ¥${ticket.price.toLocaleString()}
+            </div>
+
           </div>
 
-          <div>
-            <strong>種類：</strong>
-            ${ticket.type}
+
+          <div class="ticket-description">
+            ${ticket.description}
           </div>
 
-          <div>
-            <strong>媒体：</strong>
-            ${ticket.media}
+
+          <div class="ticket-details">
+
+            媒体：${ticket.media}<br>
+
+            利用期間：
+            ${ticket.validFrom}
+            ～ 
+            ${ticket.validTo}
+
           </div>
 
-          <div>
-            <strong>価格：</strong>
-            ${ticket.price.toLocaleString()}円
-          </div>
 
-          <div>
-            <strong>利用期間：</strong>
-            ${ticket.validFrom} ～ ${ticket.validTo}
-          </div>
+          <a
+            class="official-link"
+            href="${ticket.officialUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            &gt;&gt;公式サイトへ
+          </a>
 
-        </div>
-
-        <div class="ticket-description">
-          ${ticket.description}
-        </div>
-
-        <a
-          class="official-link"
-          href="${ticket.officialUrl}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          公式サイトを見る →
-        </a>
-
-      `;
+        `;
 
 
-      resultList.appendChild(card);
+        resultList.appendChild(
+          card
+        );
 
-    });
+      }
+    );
 
   }
 
 
   /*
-   * ページを開いたときは検索しない。
-   *
-   * つまり、ここでは searchTickets() を呼ばない。
+   * ページを開いたときは
+   * 検索結果を表示しない
    */
 
 </script>
