@@ -32,9 +32,7 @@
     header {
       background: #1677d2;
       color: white;
-
       padding: 18px 20px;
-
       text-align: center;
     }
 
@@ -51,29 +49,20 @@
 
     main {
       max-width: 1000px;
-
       margin: 0 auto;
-
       padding: 35px 20px 60px;
     }
 
-
     .welcome {
       text-align: center;
-
       font-size: 32px;
-
       margin-bottom: 45px;
-
       color: #1265b5;
-
       font-weight: bold;
     }
 
-
     h2 {
       text-align: center;
-
       margin-bottom: 25px;
     }
 
@@ -84,9 +73,7 @@
 
     .search-box {
       background: white;
-
       border-radius: 15px;
-
       padding: 25px;
 
       box-shadow:
@@ -98,32 +85,26 @@
       display: grid;
 
       grid-template-columns:
-        1fr 1fr 1fr;
+        1fr 1fr;
 
       gap: 15px;
-
-      margin-bottom: 15px;
     }
 
 
     .form-group {
       display: flex;
-
       flex-direction: column;
-
       gap: 7px;
     }
 
 
     label {
       font-weight: bold;
-
       font-size: 14px;
     }
 
 
-    select,
-    input[type="date"] {
+    select {
       width: 100%;
 
       padding: 12px;
@@ -136,33 +117,6 @@
       background: white;
 
       font-size: 15px;
-    }
-
-
-    /* =========================
-       利用日
-       ========================= */
-
-    .date-range {
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-    }
-
-
-    .date-range input {
-      min-width: 0;
-    }
-
-
-    .date-range span {
-      font-size: 18px;
-
-      font-weight: bold;
-
-      flex-shrink: 0;
     }
 
 
@@ -199,7 +153,6 @@
 
     .weekday-title {
       font-weight: bold;
-
       margin-bottom: 12px;
     }
 
@@ -240,18 +193,15 @@
 
     .search-button-area {
       text-align: center;
-
       margin-top: 25px;
     }
 
 
     .search-button {
       width: 70px;
-
       height: 70px;
 
       border: none;
-
       border-radius: 50%;
 
       background: #1677d2;
@@ -266,7 +216,6 @@
 
     .search-button:hover {
       background: #0e61ad;
-
       transform: scale(1.05);
     }
 
@@ -279,7 +228,6 @@
       position: absolute;
 
       width: 25px;
-
       height: 25px;
 
       border:
@@ -288,7 +236,6 @@
       border-radius: 50%;
 
       left: 18px;
-
       top: 17px;
     }
 
@@ -301,7 +248,6 @@
       position: absolute;
 
       width: 17px;
-
       height: 4px;
 
       background: white;
@@ -310,7 +256,6 @@
         rotate(45deg);
 
       left: 40px;
-
       top: 44px;
 
       border-radius: 3px;
@@ -323,7 +268,6 @@
 
     #results {
       display: none;
-
       margin-top: 50px;
     }
 
@@ -539,16 +483,6 @@
       }
 
 
-      .date-range {
-        gap: 5px;
-      }
-
-
-      .date-range span {
-        font-size: 16px;
-      }
-
-
       .ticket-card {
         padding:
           25px 20px 25px;
@@ -643,7 +577,7 @@
     <div class="search-box">
 
 
-      <!-- 基本検索 -->
+      <!-- エリア・社局 -->
 
       <div class="search-row">
 
@@ -724,44 +658,13 @@
 
         </div>
 
-
-
-        <!-- 利用日 -->
-
-        <div class="form-group">
-
-          <label>
-            利用日
-          </label>
-
-
-          <div class="date-range">
-
-            <input
-              type="date"
-              id="dateFrom"
-            >
-
-
-            <span>
-              〜
-            </span>
-
-
-            <input
-              type="date"
-              id="dateTo"
-            >
-
-          </div>
-
-        </div>
-
       </div>
 
 
 
-      <!-- きっぷ種類・媒体 -->
+      <!-- =========================
+           きっぷ種類・媒体
+           ========================= -->
 
       <div class="option-row">
 
@@ -846,74 +749,98 @@
 
 
           <label>
+
             <input
               type="checkbox"
               value="月"
             >
+
             月
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="火"
             >
+
             火
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="水"
             >
+
             水
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="木"
             >
+
             木
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="金"
             >
+
             金
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="土"
             >
+
             土
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="日"
             >
+
             日
+
           </label>
 
 
           <label>
+
             <input
               type="checkbox"
               value="祝"
             >
+
             祝
+
           </label>
 
 
@@ -1083,10 +1010,6 @@
 
         media: "紙",
 
-        validFrom: "2026-04-01",
-
-        validTo: "2027-03-31",
-
         weekdays: [
           "土",
           "日",
@@ -1117,10 +1040,6 @@
         type: "フリーパス",
 
         media: "紙",
-
-        validFrom: "2026-04-01",
-
-        validTo: "2027-03-31",
 
         weekdays: [
           "土",
@@ -1153,10 +1072,6 @@
 
         media: "デジタル",
 
-        validFrom: "2026-04-01",
-
-        validTo: "2027-03-31",
-
         weekdays: [
           "土",
           "日",
@@ -1187,10 +1102,6 @@
         type: "フリーパス",
 
         media: "デジタル",
-
-        validFrom: "2026-04-01",
-
-        validTo: "2027-03-31",
 
         weekdays: [
           "土",
@@ -1268,7 +1179,7 @@
 
 
         /*
-         * 社局の選択肢を一旦消す
+         * 社局の選択肢をリセット
          */
 
         companySelect.innerHTML =
@@ -1276,7 +1187,7 @@
 
 
         /*
-         * 「指定なし」を追加
+         * 指定なし
          */
 
         const noneOption =
@@ -1296,6 +1207,7 @@
         companySelect.appendChild(
           noneOption
         );
+
 
 
         /*
@@ -1411,7 +1323,7 @@
 
 
     /* =========================
-       検索ボタン
+       検索
        ========================= */
 
     searchButton.addEventListener(
@@ -1420,10 +1332,6 @@
     );
 
 
-
-    /* =========================
-       検索処理
-       ========================= */
 
     function searchTickets() {
 
@@ -1442,22 +1350,6 @@
 
       const company =
         companySelect.value;
-
-
-      /*
-       * 利用期間
-       */
-
-      const dateFrom =
-        document.getElementById(
-          "dateFrom"
-        ).value;
-
-
-      const dateTo =
-        document.getElementById(
-          "dateTo"
-        ).value;
 
 
       /*
@@ -1498,7 +1390,7 @@
 
 
       /* =========================
-         条件で絞り込み
+         絞り込み
          ========================= */
 
       const filteredTickets =
@@ -1569,70 +1461,11 @@
 
 
             /*
-             * 利用期間
-             *
-             * 検索期間ときっぷの
-             * 利用期間が重なっているか確認
-             */
-
-            if (
-              dateFrom !== ""
-            ) {
-
-
-              if (
-                dateFrom >
-                ticket.validTo
-              ) {
-
-                return false;
-
-              }
-
-            }
-
-
-            if (
-              dateTo !== ""
-            ) {
-
-
-              if (
-                dateTo <
-                ticket.validFrom
-              ) {
-
-                return false;
-
-              }
-
-            }
-
-
-
-            /*
-             * 開始日 > 終了日
-             */
-
-            if (
-              dateFrom !== "" &&
-              dateTo !== "" &&
-              dateFrom > dateTo
-            ) {
-
-              return false;
-
-            }
-
-
-
-            /*
              * 曜日
              */
 
             if (
-              selectedWeekdays.length >
-              0
+              selectedWeekdays.length > 0
             ) {
 
 
@@ -1655,10 +1488,6 @@
 
 
 
-            /*
-             * すべてOK
-             */
-
             return true;
 
           }
@@ -1667,17 +1496,15 @@
 
 
       /* =========================
-         検索結果を表示
+         結果表示
          ========================= */
 
       results.style.display =
         "block";
 
 
-
       resultCount.textContent =
         `${filteredTickets.length}件のきっぷが見つかりました`;
-
 
 
       resultList.innerHTML =
@@ -1713,7 +1540,7 @@
 
 
       /* =========================
-         きっぷカード作成
+         カード作成
          ========================= */
 
       filteredTickets.forEach(
@@ -1731,9 +1558,9 @@
 
 
 
-          /* =========================
-             社局タグ
-             ========================= */
+          /*
+           * 社局タグ
+           */
 
           const companyTags =
             ticket.companies
@@ -1752,14 +1579,12 @@
 
 
 
-          /* =========================
-             カード本体
-             ========================= */
+          /*
+           * カード内容
+           */
 
           card.innerHTML = `
 
-
-            <!-- タグ -->
 
             <div class="ticket-tags">
 
@@ -1782,8 +1607,6 @@
             </div>
 
 
-
-            <!-- きっぷ名・価格 -->
 
             <div
               class="ticket-title-row"
@@ -1808,8 +1631,6 @@
 
 
 
-            <!-- 説明 -->
-
             <div
               class="ticket-description"
             >
@@ -1818,8 +1639,6 @@
 
 
 
-            <!-- 詳細 -->
-
             <div
               class="ticket-details"
             >
@@ -1827,19 +1646,9 @@
               媒体：
               ${ticket.media}
 
-              <br>
-
-
-              利用期間：
-              ${ticket.validFrom}
-              ～
-              ${ticket.validTo}
-
             </div>
 
 
-
-            <!-- 公式サイト -->
 
             <a
               class="official-link"
@@ -1859,11 +1668,9 @@
           `;
 
 
-
           resultList.appendChild(
             card
           );
-
 
         }
       );
@@ -1871,15 +1678,9 @@
     }
 
 
-
     /*
-     * 重要
-     *
      * ページを開いた直後は
-     * searchTickets()を実行しない。
-     *
-     * 検索ボタンを押したときだけ
-     * 検索結果が表示される。
+     * 検索結果を表示しない
      */
 
 
