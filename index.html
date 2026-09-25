@@ -73,22 +73,6 @@
 
       overflow: hidden;
 
-      /*
-       * JRマルス券をイメージした配色
-       *
-       * 0〜43%
-       *   ミントグリーン
-       *
-       * 43〜54%
-       *   濃いグリーンの帯
-       *
-       * 54〜70%
-       *   ミントグリーン
-       *
-       * 70〜100%
-       *   白
-       */
-
       background:
         linear-gradient(
           to bottom,
@@ -187,14 +171,17 @@
       margin:
         0 0 48px;
 
-      text-align: center;
+      text-align:
+        center;
 
       font-size:
         clamp(28px, 4vw, 42px);
 
-      font-weight: 700;
+      font-weight:
+        700;
 
-      line-height: 1.4;
+      line-height:
+        1.4;
     }
 
 
@@ -204,12 +191,14 @@
 
     .search-row {
 
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
         1fr 1fr;
 
-      gap: 24px;
+      gap:
+        24px;
 
       margin-bottom:
         24px;
@@ -218,11 +207,14 @@
 
     .form-group {
 
-      display: flex;
+      display:
+        flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
 
-      gap: 9px;
+      gap:
+        9px;
     }
 
 
@@ -866,13 +858,13 @@
 
 
     /* ==================================================
-       データエラー
+       データ読み込みエラー
        ================================================== */
 
     .data-error {
 
       padding:
-        30px;
+        35px 25px;
 
       background:
         #ffffff;
@@ -889,8 +881,11 @@
       text-align:
         center;
 
+      font-size:
+        17px;
+
       line-height:
-        1.8;
+        1.9;
     }
 
 
@@ -904,15 +899,6 @@
 
         min-height:
           900px;
-
-        /*
-         * 横画面の背景位置
-         *
-         * 上ミント       43%
-         * 濃い緑         11%
-         * 下ミント       16%
-         * 白             30%
-         */
 
         background:
           linear-gradient(
@@ -959,10 +945,6 @@
 
         min-height:
           950px;
-
-        /*
-         * 縦画面では少し詰める
-         */
 
         background:
           linear-gradient(
@@ -1637,6 +1619,20 @@
     let tickets = [];
 
 
+    /*
+     * データ読み込みに成功したか
+     */
+
+    let ticketsLoaded = false;
+
+
+    /*
+     * データ読み込み
+     *
+     * ページを開いた時点では
+     * エラーを画面に表示しない。
+     */
+
     async function loadTickets() {
 
       try {
@@ -1650,7 +1646,7 @@
         if (!response.ok) {
 
           throw new Error(
-            "tickets.jsonを読み込めませんでした"
+            "tickets.jsonの読み込みに失敗しました"
           );
 
         }
@@ -1661,35 +1657,23 @@
 
 
         tickets =
-          data.tickets || [];
+          Array.isArray(data.tickets)
+            ? data.tickets
+            : [];
+
+
+        ticketsLoaded = true;
 
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+          "きっぷデータの読み込みに失敗しました:",
+          error
+        );
 
 
-        resultList.innerHTML = `
-
-          <div class="data-error">
-
-            きっぷデータを読み込めませんでした。
-
-            <br><br>
-
-            <strong>
-              data/tickets.json
-            </strong>
-
-            が正しく配置されているか確認してください。
-
-          </div>
-
-        `;
-
-
-        results.style.display =
-          "block";
+        ticketsLoaded = false;
 
       }
 
@@ -1849,8 +1833,71 @@
     );
 
 
-    function searchTickets() {
+    async function searchTickets() {
 
+
+      /*
+       * 万が一まだ読み込み中なら
+       * 読み込み完了を待つ
+       */
+
+      if (!ticketsLoaded) {
+
+        await loadTickets();
+
+      }
+
+
+      /*
+       * データを読み込めなかった場合
+       *
+       * このタイミングで初めて
+       * エラーメッセージを表示する
+       */
+
+      if (!ticketsLoaded) {
+
+        results.style.display =
+          "block";
+
+
+        resultCount.textContent =
+          "";
+
+
+        resultList.innerHTML = `
+
+          <div class="data-error">
+
+            きっぷデータを読み込めませんでした。
+
+            <br>
+
+            ネットワーク接続を確認してください。
+
+            <br>
+
+            何度も表示される場合は、運営にお問い合わせください。
+
+          </div>
+
+        `;
+
+
+        results.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+
+        return;
+
+      }
+
+
+      /* ==================================================
+         選択条件
+         ================================================== */
 
       const area =
         areaSelect.value;
@@ -1872,6 +1919,10 @@
         ).value;
 
 
+      /*
+       * 選択された曜日
+       */
+
       const selectedWeekdays =
         [
           ...document.querySelectorAll(
@@ -1883,7 +1934,7 @@
 
 
       /* ==================================================
-         絞り込み
+         きっぷを絞り込む
          ================================================== */
 
       const filteredTickets =
@@ -1953,6 +2004,9 @@
 
             /*
              * 曜日
+             *
+             * 選択した曜日を
+             * すべて満たすきっぷだけ表示
              */
 
             if (
@@ -2049,7 +2103,9 @@
             "ticket-card";
 
 
-          /* 社局タグ */
+          /*
+           * 社局タグ
+           */
 
           const companyTags =
             ticket.companies
@@ -2067,13 +2123,17 @@
               .join("");
 
 
-          /* 曜日 */
+          /*
+           * 曜日
+           */
 
           const weekdayText =
             ticket.weekdays.join("・");
 
 
-          /* 価格 */
+          /*
+           * 価格
+           */
 
           const priceText =
             ticket.price &&
@@ -2084,7 +2144,9 @@
               : "価格情報なし";
 
 
-          /* カードHTML */
+          /*
+           * カード
+           */
 
           card.innerHTML = `
 
@@ -2164,7 +2226,7 @@
 
 
       /* ==================================================
-         検索結果までスクロール
+         検索結果まで移動
          ================================================== */
 
       results.scrollIntoView({
