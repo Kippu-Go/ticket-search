@@ -2,22 +2,11 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- BIZ UDPGothic -->
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"
@@ -30,7 +19,7 @@
   <style>
 
     /* ==================================================
-       基本
+       基本設定
        ================================================== */
 
     * {
@@ -61,33 +50,49 @@
        ================================================== */
 
     .top-area {
+
       position: relative;
 
-      min-height: 780px;
+      width: 100%;
+
+      /*
+       * 検索部分全体の高さ
+       */
+      min-height: 1050px;
 
       overflow: hidden;
 
-      background: #baf4df;
-    }
+      /*
+       * 基本の背景
+       *
+       * 上：
+       *   ミントグリーン
+       *
+       * 中：
+       *   濃い緑の帯
+       *
+       * 下：
+       *   ミントグリーン
+       *
+       * 最下部：
+       *   白
+       */
+      background:
+        linear-gradient(
+          to bottom,
 
+          #baf4df 0%,
+          #baf4df 43%,
 
-    /*
-     * 濃い緑の横帯
-     */
+          #62c45d 43%,
+          #62c45d 54%,
 
-    .green-band {
-      position: absolute;
+          #baf4df 54%,
+          #baf4df 82%,
 
-      left: 0;
-      right: 0;
-
-      top: 62%;
-
-      height: 105px;
-
-      background: #62c45d;
-
-      z-index: 0;
+          #ffffff 82%,
+          #ffffff 100%
+        );
     }
 
 
@@ -96,16 +101,17 @@
        ================================================== */
 
     main {
+
       position: relative;
 
-      z-index: 1;
+      z-index: 2;
 
       width: min(1100px, 100%);
 
       margin: 0 auto;
 
       padding:
-        90px 30px 100px;
+        100px 30px 120px;
     }
 
 
@@ -114,12 +120,13 @@
        ================================================== */
 
     .welcome {
-      margin: 0;
+
+      margin: 0 0 115px;
 
       text-align: center;
 
       font-size:
-        clamp(38px, 5vw, 64px);
+        clamp(40px, 5vw, 64px);
 
       font-weight: 400;
 
@@ -132,17 +139,13 @@
        ================================================== */
 
     .search-panel {
-      position: relative;
-
-      z-index: 2;
 
       width: min(1000px, 100%);
 
-      margin:
-        105px auto 0;
+      margin: 0 auto;
 
       padding:
-        52px 65px 58px;
+        55px 65px 60px;
 
       background: #ffffff;
 
@@ -152,8 +155,7 @@
       border-radius: 42px;
 
       box-shadow:
-        0 2px 0
-        rgba(0, 0, 0, 0.05);
+        0 2px 0 rgba(0, 0, 0, 0.05);
     }
 
 
@@ -162,7 +164,9 @@
        ================================================== */
 
     .search-title {
-      margin: 0 0 45px;
+
+      margin:
+        0 0 48px;
 
       text-align: center;
 
@@ -170,6 +174,8 @@
         clamp(28px, 4vw, 42px);
 
       font-weight: 700;
+
+      line-height: 1.4;
     }
 
 
@@ -178,6 +184,7 @@
        ================================================== */
 
     .search-row {
+
       display: grid;
 
       grid-template-columns:
@@ -190,6 +197,7 @@
 
 
     .form-group {
+
       display: flex;
 
       flex-direction: column;
@@ -199,6 +207,7 @@
 
 
     .form-group label {
+
       font-size: 17px;
 
       font-weight: 700;
@@ -206,16 +215,17 @@
 
 
     /* ==================================================
-       セレクト
+       セレクトボックス
        ================================================== */
 
     select {
+
       width: 100%;
 
       min-height: 58px;
 
       padding:
-        10px 16px;
+        10px 45px 10px 16px;
 
       border:
         2px solid #333;
@@ -237,9 +247,9 @@
 
 
     select:focus {
+
       outline:
-        3px solid
-        rgba(22, 119, 210, 0.25);
+        3px solid rgba(22, 119, 210, 0.25);
 
       border-color: #1677d2;
     }
@@ -250,12 +260,14 @@
        ================================================== */
 
     .weekday-area {
-      margin-top: 34px;
+
+      margin-top: 35px;
     }
 
 
     .weekday-title {
-      margin-bottom: 17px;
+
+      margin-bottom: 18px;
 
       text-align: center;
 
@@ -266,6 +278,7 @@
 
 
     .weekday-list {
+
       display: flex;
 
       justify-content: center;
@@ -277,6 +290,7 @@
 
 
     .weekday-list label {
+
       display: inline-flex;
 
       align-items: center;
@@ -290,12 +304,12 @@
       padding:
         8px 13px;
 
+      background: #ffffff;
+
       border:
         2px solid #333;
 
       border-radius: 9px;
-
-      background: #ffffff;
 
       font-size: 17px;
 
@@ -312,13 +326,16 @@
 
 
     .weekday-list label:hover {
-      background: #f3f3f3;
 
-      transform: translateY(-1px);
+      background: #f2f2f2;
+
+      transform:
+        translateY(-1px);
     }
 
 
     .weekday-list input {
+
       width: 17px;
 
       height: 17px;
@@ -330,26 +347,42 @@
     }
 
 
-    /* ==================================================
-       曜日の色
-       ================================================== */
+    /* --------------------------------------------------
+       月〜金
+       -------------------------------------------------- */
 
     .weekday-normal {
+
       color: #111;
     }
 
 
+    /* --------------------------------------------------
+       土曜日
+       -------------------------------------------------- */
+
     .weekday-saturday {
+
       color: #1677d2 !important;
     }
 
 
+    /* --------------------------------------------------
+       日曜日
+       -------------------------------------------------- */
+
     .weekday-sunday {
+
       color: #e53935 !important;
     }
 
 
+    /* --------------------------------------------------
+       祝日
+       -------------------------------------------------- */
+
     .weekday-holiday {
+
       color: #e53935 !important;
     }
 
@@ -359,15 +392,17 @@
        ================================================== */
 
     .search-button-area {
+
       display: flex;
 
       justify-content: center;
 
-      margin-top: 40px;
+      margin-top: 42px;
     }
 
 
     .search-button {
+
       position: relative;
 
       width: 76px;
@@ -387,28 +422,33 @@
       overflow: hidden;
 
       transition:
-        background 0.15s,
-        transform 0.15s;
+        transform 0.15s,
+        background 0.15s;
     }
 
 
     .search-button:hover {
+
       background: #0f62b0;
 
-      transform: scale(1.05);
+      transform:
+        scale(1.05);
     }
 
 
     .search-button:active {
-      transform: scale(0.97);
+
+      transform:
+        scale(0.97);
     }
 
 
-    /*
-     * 虫めがねの丸
-     */
+    /* ==================================================
+       虫めがね
+       ================================================== */
 
     .search-button::before {
+
       content: "";
 
       position: absolute;
@@ -417,7 +457,7 @@
 
       height: 25px;
 
-      left: 21px;
+      left: 20px;
 
       top: 18px;
 
@@ -428,11 +468,8 @@
     }
 
 
-    /*
-     * 虫めがねの持ち手
-     */
-
     .search-button::after {
+
       content: "";
 
       position: absolute;
@@ -441,9 +478,9 @@
 
       height: 4px;
 
-      left: 43px;
+      left: 42px;
 
-      top: 44px;
+      top: 43px;
 
       background: #ffffff;
 
@@ -462,25 +499,23 @@
        ================================================== */
 
     #results {
+
       display: none;
 
-      width: 100%;
-
-      background: #ffffff;
-
-      padding:
-        70px 30px 100px;
-    }
-
-
-    .results-inner {
       width: min(1000px, 100%);
 
-      margin: 0 auto;
+      margin:
+        80px auto 0;
+
+      padding:
+        0 20px 100px;
+
+      background: #ffffff;
     }
 
 
     #results h2 {
+
       margin:
         0 0 25px;
 
@@ -491,6 +526,7 @@
 
 
     .result-count {
+
       margin-bottom: 20px;
 
       font-size: 18px;
@@ -504,6 +540,7 @@
        ================================================== */
 
     .ticket-card {
+
       margin-bottom: 28px;
 
       padding:
@@ -517,12 +554,16 @@
       border-radius: 32px;
 
       box-shadow:
-        0 4px 10px
-        rgba(0, 0, 0, 0.05);
+        0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
 
+    /* ==================================================
+       タグ
+       ================================================== */
+
     .ticket-tags {
+
       display: flex;
 
       flex-wrap: wrap;
@@ -534,6 +575,7 @@
 
 
     .ticket-tag {
+
       display: inline-block;
 
       padding:
@@ -550,31 +592,41 @@
 
 
     .company-tag {
+
       background: #f28c00;
     }
 
 
     .company-tag:nth-child(2) {
+
       background: #315bea;
     }
 
 
     .company-tag:nth-child(3) {
+
       background: #7b55d9;
     }
 
 
     .type-tag {
+
       background: #62c45d;
     }
 
 
     .weekday-tag {
+
       background: #e85a4f;
     }
 
 
+    /* ==================================================
+       きっぷ名・価格
+       ================================================== */
+
     .ticket-title-row {
+
       display: flex;
 
       align-items: baseline;
@@ -588,6 +640,7 @@
 
 
     .ticket-name {
+
       font-size:
         clamp(30px, 5vw, 52px);
 
@@ -598,6 +651,7 @@
 
 
     .ticket-price {
+
       font-size: 30px;
 
       font-weight: 700;
@@ -606,7 +660,12 @@
     }
 
 
+    /* ==================================================
+       説明
+       ================================================== */
+
     .ticket-description {
+
       margin-bottom: 25px;
 
       font-size: 18px;
@@ -615,7 +674,12 @@
     }
 
 
+    /* ==================================================
+       詳細
+       ================================================== */
+
     .ticket-details {
+
       margin-bottom: 22px;
 
       color: #444;
@@ -626,7 +690,12 @@
     }
 
 
+    /* ==================================================
+       公式サイト
+       ================================================== */
+
     .official-link {
+
       color: #1677d2;
 
       font-size: 17px;
@@ -638,15 +707,17 @@
 
 
     .official-link:hover {
+
       color: #0f62b0;
     }
 
 
     /* ==================================================
-       検索結果 0件
+       検索結果0件
        ================================================== */
 
     .no-result {
+
       padding: 40px;
 
       background: #ffffff;
@@ -663,10 +734,11 @@
 
 
     /* ==================================================
-       エラー
+       データエラー
        ================================================== */
 
     .data-error {
+
       padding: 30px;
 
       background: #ffffff;
@@ -685,85 +757,180 @@
 
 
     /* ==================================================
-       タブレット・縦画面
+       横画面
        ================================================== */
 
-    @media (max-width: 800px) {
+    @media (orientation: landscape) {
 
       .top-area {
-        min-height: 760px;
-      }
 
+        /*
+         * 横画面では
+         *
+         * 43%くらいまで
+         * → ミント
+         *
+         * 43〜54%
+         * → 濃い緑
+         *
+         * 54〜82%
+         * → ミント
+         *
+         * 82%以降
+         * → 白
+         *
+         * という構成
+         */
 
-      .green-band {
-        top: 62%;
+        background:
+          linear-gradient(
+            to bottom,
 
-        height: 95px;
+            #baf4df 0%,
+            #baf4df 43%,
+
+            #62c45d 43%,
+            #62c45d 54%,
+
+            #baf4df 54%,
+            #baf4df 82%,
+
+            #ffffff 82%,
+            #ffffff 100%
+          );
       }
 
 
       main {
-        padding:
-          65px 18px 80px;
+
+        padding-top:
+          90px;
       }
 
 
       .welcome {
-        font-size: 38px;
+
+        margin-bottom:
+          105px;
+      }
+
+    }
+
+
+    /* ==================================================
+       タブレット・スマホ
+       ================================================== */
+
+    @media (max-width: 700px) {
+
+      .top-area {
+
+        min-height:
+          1050px;
+
+        background:
+          linear-gradient(
+            to bottom,
+
+            #baf4df 0%,
+            #baf4df 39%,
+
+            #62c45d 39%,
+            #62c45d 50%,
+
+            #baf4df 50%,
+            #baf4df 80%,
+
+            #ffffff 80%,
+            #ffffff 100%
+          );
+      }
+
+
+      main {
+
+        padding:
+          60px 15px 90px;
+      }
+
+
+      .welcome {
+
+        margin-bottom:
+          70px;
+
+        font-size:
+          35px;
       }
 
 
       .search-panel {
-        margin-top: 75px;
 
         padding:
-          38px 22px 42px;
+          35px 20px 40px;
 
-        border-radius: 30px;
+        border-radius:
+          28px;
       }
 
 
       .search-title {
-        margin-bottom: 32px;
 
-        font-size: 27px;
+        margin-bottom:
+          32px;
+
+        font-size:
+          27px;
       }
 
 
       .search-row {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
 
         gap: 18px;
 
-        margin-bottom: 18px;
+        margin-bottom:
+          18px;
       }
 
 
       .weekday-area {
-        margin-top: 25px;
+
+        margin-top:
+          25px;
       }
 
 
       .weekday-list {
+
         gap: 7px;
       }
 
 
       .weekday-list label {
-        min-width: 55px;
 
-        min-height: 48px;
+        min-width:
+          55px;
 
-        font-size: 15px;
+        min-height:
+          48px;
+
+        font-size:
+          15px;
       }
 
 
       .search-button-area {
-        margin-top: 32px;
+
+        margin-top:
+          32px;
       }
 
 
       .search-button {
+
         width: 68px;
 
         height: 68px;
@@ -771,6 +938,7 @@
 
 
       .search-button::before {
+
         width: 22px;
 
         height: 22px;
@@ -782,6 +950,7 @@
 
 
       .search-button::after {
+
         width: 16px;
 
         left: 39px;
@@ -791,179 +960,53 @@
 
 
       #results {
+
+        width: 100%;
+
+        margin-top:
+          60px;
+
         padding:
-          55px 18px 80px;
+          0 15px 80px;
       }
 
 
       .ticket-card {
+
         padding:
           25px 20px;
 
-        border-radius: 25px;
+        border-radius:
+          25px;
       }
 
     }
 
 
     /* ==================================================
-       横画面
-       ==================================================
-
-       ここが今回の重要ポイント。
-
-       横画面ではミントグリーンを
-       「エリア・社局名あたり」までにする。
-       ================================================== */
-
-    @media (
-      orientation: landscape
-    ) and (
-      min-width: 700px
-    ) {
-
-      .top-area {
-
-        /*
-         * 横画面ではトップ部分を
-         * 画面高さに合わせる
-         */
-
-        min-height: 650px;
-
-        /*
-         * 下は白にする
-         */
-
-        background:
-          linear-gradient(
-            to bottom,
-            #baf4df 0,
-            #baf4df 57%,
-            #ffffff 57%,
-            #ffffff 100%
-          );
-      }
-
-
-      /*
-       * 濃い緑の帯
-       *
-       * 写真の帯の位置に近づける
-       */
-
-      .green-band {
-
-        top: 57%;
-
-        height: 11%;
-
-      }
-
-
-      main {
-
-        padding-top: 55px;
-
-        padding-bottom: 70px;
-
-      }
-
-
-      .welcome {
-
-        font-size:
-          clamp(42px, 4vw, 60px);
-
-        margin-bottom: 70px;
-
-      }
-
-
-      /*
-       * 横画面では検索パネルを
-       * エリア・社局名付近まで
-       * ミントグリーンの中に入れる
-       */
-
-      .search-panel {
-
-        margin-top: 0;
-
-        padding:
-          38px 55px 45px;
-
-      }
-
-
-      .search-title {
-
-        margin-bottom: 28px;
-
-        font-size: 32px;
-
-      }
-
-
-      .search-row {
-
-        gap: 20px;
-
-        margin-bottom: 18px;
-
-      }
-
-
-      .form-group label {
-
-        font-size: 15px;
-
-      }
-
-
-      select {
-
-        min-height: 50px;
-
-        font-size: 15px;
-
-      }
-
-
-      /*
-       * 検索結果はトップの外側に出す
-       * ので完全に白
-       */
-
-      #results {
-
-        position: relative;
-
-        z-index: 5;
-
-      }
-
-    }
-
-
-    /* ==================================================
-       とても小さい画面
+       小さいスマホ
        ================================================== */
 
     @media (max-width: 420px) {
 
       .welcome {
-        font-size: 30px;
+
+        font-size:
+          29px;
       }
 
 
       .search-title {
-        font-size: 23px;
+
+        font-size:
+          23px;
       }
 
 
       .weekday-list label {
-        min-width: 48px;
+
+        min-width:
+          48px;
 
         padding:
           7px 8px;
@@ -971,7 +1014,9 @@
 
 
       .weekday-list input {
-        margin-right: 4px;
+
+        margin-right:
+          4px;
       }
 
     }
@@ -990,11 +1035,6 @@
   <div class="top-area">
 
 
-    <!-- 濃い緑の帯 -->
-
-    <div class="green-band"></div>
-
-
     <main>
 
 
@@ -1008,7 +1048,7 @@
 
 
       <!-- ==================================================
-           検索パネル
+           きっぷ絞り込み
            ================================================== -->
 
       <section class="search-panel">
@@ -1019,10 +1059,14 @@
         </h2>
 
 
-        <!-- エリア・社局名 -->
+        <!-- ==================================================
+             エリア・社局
+             ================================================== -->
 
         <div class="search-row">
 
+
+          <!-- エリア -->
 
           <div class="form-group">
 
@@ -1078,6 +1122,8 @@
           </div>
 
 
+          <!-- 社局 -->
+
           <div class="form-group">
 
             <label for="company">
@@ -1095,13 +1141,18 @@
 
           </div>
 
+
         </div>
 
 
-        <!-- 種類・媒体 -->
+        <!-- ==================================================
+             きっぷ種類・媒体
+             ================================================== -->
 
         <div class="search-row">
 
+
+          <!-- 種類 -->
 
           <div class="form-group">
 
@@ -1133,6 +1184,8 @@
           </div>
 
 
+          <!-- 媒体 -->
+
           <div class="form-group">
 
             <label for="media">
@@ -1158,6 +1211,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -1176,6 +1230,8 @@
           <div class="weekday-list">
 
 
+            <!-- 月 -->
+
             <label class="weekday-normal">
 
               <input
@@ -1187,6 +1243,8 @@
 
             </label>
 
+
+            <!-- 火 -->
 
             <label class="weekday-normal">
 
@@ -1200,6 +1258,8 @@
             </label>
 
 
+            <!-- 水 -->
+
             <label class="weekday-normal">
 
               <input
@@ -1211,6 +1271,8 @@
 
             </label>
 
+
+            <!-- 木 -->
 
             <label class="weekday-normal">
 
@@ -1224,6 +1286,8 @@
             </label>
 
 
+            <!-- 金 -->
+
             <label class="weekday-normal">
 
               <input
@@ -1235,6 +1299,8 @@
 
             </label>
 
+
+            <!-- 土 -->
 
             <label class="weekday-saturday">
 
@@ -1248,6 +1314,8 @@
             </label>
 
 
+            <!-- 日 -->
+
             <label class="weekday-sunday">
 
               <input
@@ -1259,6 +1327,8 @@
 
             </label>
 
+
+            <!-- 祝 -->
 
             <label class="weekday-holiday">
 
@@ -1303,7 +1373,6 @@
   </div>
 
 
-
   <!-- ==================================================
        検索結果
        ================================================== -->
@@ -1311,24 +1380,18 @@
   <section id="results">
 
 
-    <div class="results-inner">
+    <h2>
+      検索結果
+    </h2>
 
 
-      <h2>
-        検索結果
-      </h2>
+    <div
+      id="resultCount"
+      class="result-count"
+    ></div>
 
 
-      <div
-        id="resultCount"
-        class="result-count"
-      ></div>
-
-
-      <div id="resultList"></div>
-
-
-    </div>
+    <div id="resultList"></div>
 
 
   </section>
@@ -1455,9 +1518,7 @@
       try {
 
         const response =
-          await fetch(
-            "./data/tickets.json"
-          );
+          await fetch("./data/tickets.json");
 
 
         if (!response.ok) {
@@ -1486,9 +1547,9 @@
 
           <div class="data-error">
 
-            きっぷデータを読み込めませんでした。
+            きっぷデータを読み込めませんでした。<br>
 
-            <br><br>
+            <br>
 
             <strong>
               data/tickets.json
@@ -1515,29 +1576,25 @@
 
     areaSelect.addEventListener(
       "change",
-      function () {
+      function() {
 
 
         const selectedArea =
           this.value;
 
 
-        companySelect.innerHTML =
-          "";
-
-
         /*
-         * 指定なし
+         * 社局欄をリセット
          */
 
+        companySelect.innerHTML = "";
+
+
         const noneOption =
-          document.createElement(
-            "option"
-          );
+          document.createElement("option");
 
 
-        noneOption.value =
-          "";
+        noneOption.value = "";
 
 
         noneOption.textContent =
@@ -1550,7 +1607,8 @@
 
 
         /*
-         * エリア未指定なら
+         * エリア未指定
+         *
          * 全社局を表示
          */
 
@@ -1582,7 +1640,9 @@
           );
 
 
-          [...allCompanies]
+          [
+            ...allCompanies
+          ]
             .sort()
             .forEach(
               company => {
@@ -1665,11 +1725,15 @@
 
 
     /* ==================================================
-       検索
+       検索処理
        ================================================== */
 
     function searchTickets() {
 
+
+      /*
+       * 選択された条件
+       */
 
       const area =
         areaSelect.value;
@@ -1706,7 +1770,7 @@
 
 
       /*
-       * 絞り込み
+       * きっぷを絞り込む
        */
 
       const filteredTickets =
@@ -1810,20 +1874,27 @@
         );
 
 
-      /* ==================================================
-         結果表示
-         ================================================== */
+      /*
+       * 検索結果を表示
+       */
 
       results.style.display =
         "block";
 
 
+      /*
+       * 件数
+       */
+
       resultCount.textContent =
         `${filteredTickets.length}件のきっぷが見つかりました`;
 
 
-      resultList.innerHTML =
-        "";
+      /*
+       * 一度クリア
+       */
+
+      resultList.innerHTML = "";
 
 
       /*
@@ -1846,13 +1917,23 @@
         `;
 
 
+        /*
+         * 検索結果までスクロール
+         */
+
+        results.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+
         return;
 
       }
 
 
       /*
-       * きっぷカード
+       * きっぷカード作成
        */
 
       filteredTickets.forEach(
@@ -1911,7 +1992,7 @@
 
 
           /*
-           * カードHTML
+           * カード
            */
 
           card.innerHTML = `
@@ -1950,7 +2031,9 @@
 
 
             <div class="ticket-description">
+
               ${ticket.description}
+
             </div>
 
 
@@ -1973,7 +2056,9 @@
               target="_blank"
               rel="noopener noreferrer"
             >
+
               &gt;&gt;公式サイトへ
+
             </a>
 
           `;
@@ -1986,11 +2071,21 @@
         }
       );
 
+
+      /*
+       * 検索結果までスクロール
+       */
+
+      results.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
     }
 
 
     /* ==================================================
-       起動
+       初期読み込み
        ================================================== */
 
     loadTickets();
