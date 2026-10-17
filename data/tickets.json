@@ -77,39 +77,39 @@
       "lastChecked": "2026-09-25"
     },
     {
-      "id": "kippu-0003",
-      "name": "東海おでかけパス",
-      "companies": [
-        "JR東海"
-      ],
-      "areas": [
-        "東海4県"
-      ],
-      "type": "フリーパス",
-      "medium": "デジタル",
-      "price": {
-        "adult": 2720,
-        "child": null
-      },
-      "weekdays": [
-        "土",
-        "日",
-        "祝"
-      ],
-      "usageArea": "東海エリア",
-      "salePeriod": {
-        "from": null,
-        "to": null
-      },
-      "usagePeriod": {
-        "from": null,
-        "to": null
-      },
-      "description": "東海エリアのおでかけに利用できるきっぷです。",
-      "notes": [],
-      memberOnly: true,
-      "officialUrl": "#",
-      "lastChecked": "2026-09-25"
+"id": "kippu-0003",
+"name": "東海おでかけパス",
+"companies": [
+"JR東海"
+],
+"areas": [
+"東海4県"
+],
+"type": "フリーパス",
+"medium": "デジタル",
+"price": {
+"adult": 2720,
+"child": null
+},
+"weekdays": [
+"土",
+"日",
+"祝"
+],
+"usageArea": "東海エリア",
+"salePeriod": {
+"from": null,
+"to": null
+},
+"usagePeriod": {
+"from": null,
+"to": null
+},
+"description": "東海エリアのおでかけに利用できるきっぷです。",
+"notes": [],
+"memberOnly": true,
+"officialUrl": "#",
+"lastChecked": "2026-09-25"
     },
     {
       "id": "kippu-0004",
