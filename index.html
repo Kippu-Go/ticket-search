@@ -1007,7 +1007,46 @@
      * ========================================
      */
 
-    async function loadTickets() {
+    
+async function loadTickets() {
+  try {
+    const response = await fetch("./data/tickets.json");
+
+    if (!response.ok) {
+      throw new Error(
+        `HTTPエラー: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data.tickets)) {
+      throw new Error(
+        'JSONの形式が違います。"tickets" 配列を確認してください。'
+      );
+    }
+
+    tickets = data.tickets;
+    ticketsLoaded = true;
+
+  } catch (error) {
+    console.error(
+      "きっぷデータの読み込みエラー:",
+      error
+    );
+
+    ticketsLoaded = false;
+
+    results.style.display = "block";
+    resultCount.textContent = "";
+    resultList.innerHTML = `
+      <div class="error-message">
+        読み込みエラー：<br>
+        ${escapeHtml(error.message || String(error))}
+      </div>
+    `;
+  }
+}
 
       try {
 
