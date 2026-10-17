@@ -2,37 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>きっぷゴー</title>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       min-height: 100%;
@@ -41,18 +21,17 @@
     body {
       font-family: "BIZ UDPGothic", sans-serif;
       color: #111;
-      background:
-        linear-gradient(
-          to bottom,
-          #ccefe4 0%,
-          #ccefe4 43%,
-          #8bc782 43%,
-          #8bc782 54%,
-          #ccefe4 54%,
-          #ccefe4 70%,
-          #ffffff 70%,
-          #ffffff 100%
-        );
+      background: linear-gradient(
+        to bottom,
+        #ccefe4 0%,
+        #ccefe4 43%,
+        #8bc782 43%,
+        #8bc782 54%,
+        #ccefe4 54%,
+        #ccefe4 70%,
+        #fff 70%,
+        #fff 100%
+      );
       min-height: 100vh;
     }
 
@@ -86,7 +65,6 @@
       width: min(1100px, calc(100% - 50px));
       margin: 0 auto;
       padding: 32px 40px 35px;
-
       background: #fff;
       border: 4px solid #111;
       border-radius: 22px;
@@ -94,20 +72,12 @@
 
     .search-row {
       display: grid;
-      grid-template-columns:
-        1fr
-        1fr
-        1fr
-        1fr
-        90px;
-
+      grid-template-columns: 1fr 1fr 1fr 1fr 90px;
       gap: 18px;
       align-items: end;
     }
 
-    .field {
-      min-width: 0;
-    }
+    .field { min-width: 0; }
 
     .field-label {
       display: block;
@@ -120,76 +90,104 @@
       width: 100%;
       height: 48px;
       padding: 0 38px 0 14px;
-
       font-family: inherit;
       font-size: 16px;
       color: #111;
-
       background: #fff;
       border: 2px solid #111;
       border-radius: 8px;
-
       cursor: pointer;
     }
 
     .search-button {
       position: relative;
-
       width: 66px;
       height: 66px;
-
       margin: 0 auto;
-
       border: none;
       border-radius: 50%;
-
       background: #1769e0;
-
       cursor: pointer;
     }
 
-    .search-button:hover {
-      background: #0f57c4;
-    }
+    .search-button:hover { background: #0f57c4; }
 
     .search-button::before {
       content: "";
-
       position: absolute;
-
       width: 21px;
       height: 21px;
-
       left: 20px;
       top: 18px;
-
       border: 4px solid #fff;
       border-radius: 50%;
     }
 
     .search-button::after {
       content: "";
-
       position: absolute;
-
       width: 17px;
       height: 4px;
-
       left: 39px;
       top: 43px;
-
       background: #fff;
       border-radius: 3px;
-
       transform: rotate(45deg);
       transform-origin: left center;
     }
 
-    .weekday-area {
-      margin-top: 28px;
+    .weekday-area { margin-top: 28px; }
+
+    .weekday-label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 17px;
+      font-weight: 700;
     }
-    
-        .member-filter {
+
+    .weekday-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .weekday-option { position: relative; }
+
+    .weekday-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .weekday-option label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 55px;
+      height: 42px;
+      padding: 0 14px;
+      border: 2px solid #111;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .weekday-option input:checked + label {
+      background: #8bc782;
+      color: #fff;
+    }
+
+    .weekday-option.saturday label { color: #0066cc; }
+
+    .weekday-option.sunday label,
+    .weekday-option.holiday label { color: #d60000; }
+
+    .weekday-option input:checked + label { color: #fff; }
+
+    .member-filter {
       margin-top: 24px;
       font-size: 16px;
       font-weight: 700;
@@ -209,79 +207,14 @@
       cursor: pointer;
     }
 
-    .weekday-label {
-      display: block;
-      margin-bottom: 12px;
-
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .weekday-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .weekday-option {
-      position: relative;
-    }
-
-    .weekday-option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .weekday-option label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 55px;
-      height: 42px;
-      padding: 0 14px;
-
-      border: 2px solid #111;
-      border-radius: 8px;
-
-      background: #fff;
-
-      font-size: 16px;
-      font-weight: 700;
-
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .weekday-option input:checked + label {
-      background: #8bc782;
-      color: #fff;
-    }
-
-    .weekday-option.saturday label {
-      color: #0066cc;
-    }
-
-    .weekday-option.sunday label,
-    .weekday-option.holiday label {
-      color: #d60000;
-    }
-
-    .weekday-option input:checked + label {
-      color: #fff;
-    }
-
     .results {
       display: none;
-
       width: min(1100px, calc(100% - 50px));
       margin: 55px auto 0;
     }
 
     .results-title {
       margin: 0 0 22px;
-
       font-size: clamp(24px, 3vw, 36px);
       font-weight: 700;
     }
@@ -295,7 +228,6 @@
     .result-card {
       margin-bottom: 22px;
       padding: 25px;
-
       background: #fff;
       border: 3px solid #111;
       border-radius: 16px;
@@ -310,27 +242,21 @@
 
     .tag {
       display: inline-block;
-
       padding: 6px 11px;
-
       border-radius: 999px;
-
       background: #e5f3ed;
-
       font-size: 13px;
       font-weight: 700;
     }
 
     .result-name {
       margin: 0 0 12px;
-
       font-size: clamp(22px, 3vw, 30px);
       line-height: 1.5;
     }
 
     .result-price {
       margin-bottom: 15px;
-
       font-size: 22px;
       font-weight: 700;
     }
@@ -342,31 +268,24 @@
 
     .result-description {
       margin: 0 0 15px;
-
       line-height: 1.8;
     }
 
     .result-info {
       display: grid;
       gap: 7px;
-
       margin-top: 18px;
       padding-top: 18px;
-
       border-top: 1px solid #ccc;
-
       font-size: 14px;
       line-height: 1.7;
     }
 
-    .result-info strong {
-      font-weight: 700;
-    }
+    .result-info strong { font-weight: 700; }
 
     .notes {
       margin: 14px 0 0;
       padding-left: 20px;
-
       font-size: 14px;
       line-height: 1.8;
     }
@@ -374,7 +293,6 @@
     .official-link {
       display: inline-block;
       margin-top: 18px;
-
       color: #075bc4;
       font-weight: 700;
       text-decoration: underline;
@@ -382,11 +300,9 @@
 
     .no-results {
       padding: 40px 20px;
-
       background: #fff;
       border: 3px solid #111;
       border-radius: 16px;
-
       text-align: center;
       font-size: 18px;
       font-weight: 700;
@@ -395,60 +311,47 @@
 
     .error-message {
       padding: 35px 20px;
-
       background: #fff;
       border: 3px solid #b00000;
       border-radius: 16px;
-
-      text-align: center;
-
+      text-align: left;
       color: #b00000;
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 700;
       line-height: 1.9;
+      overflow-wrap: anywhere;
     }
+
+    .error-message p { margin: 8px 0; }
 
     @media (max-width: 900px) {
       body {
-        background:
-          linear-gradient(
-            to bottom,
-            #ccefe4 0%,
-            #ccefe4 39%,
-            #8bc782 39%,
-            #8bc782 50%,
-            #ccefe4 50%,
-            #ccefe4 68%,
-            #ffffff 68%,
-            #ffffff 100%
-          );
+        background: linear-gradient(
+          to bottom,
+          #ccefe4 0%,
+          #ccefe4 39%,
+          #8bc782 39%,
+          #8bc782 50%,
+          #ccefe4 50%,
+          #ccefe4 68%,
+          #fff 68%,
+          #fff 100%
+        );
       }
 
-      .search-title {
-        margin-top: 180px;
-      }
+      .search-title { margin-top: 180px; }
 
-      .search-row {
-        grid-template-columns: 1fr 1fr;
-      }
+      .search-row { grid-template-columns: 1fr 1fr; }
 
-      .search-button {
-        margin: 0;
-      }
+      .search-button { margin: 0; }
     }
 
     @media (max-width: 600px) {
-      .page {
-        padding-bottom: 50px;
-      }
+      .page { padding-bottom: 50px; }
 
-      .top-area {
-        padding-top: 30px;
-      }
+      .top-area { padding-top: 30px; }
 
-      .welcome {
-        font-size: 34px;
-      }
+      .welcome { font-size: 34px; }
 
       .search-title {
         margin-top: 120px;
@@ -478,13 +381,9 @@
         margin-top: 35px;
       }
 
-      .result-card {
-        padding: 20px;
-      }
+      .result-card { padding: 20px; }
 
-      .weekday-list {
-        gap: 7px;
-      }
+      .weekday-list { gap: 7px; }
 
       .weekday-option label {
         min-width: 45px;
@@ -495,265 +394,119 @@
 </head>
 
 <body>
-
   <div class="page">
-
     <div class="top-area">
-
-      <h1 class="welcome">
-        きっぷゴーへようこそ！
-      </h1>
-
-      <h2 class="search-title">
-        （きっぷの絞り込み）
-      </h2>
+      <h1 class="welcome">きっぷゴーへようこそ！</h1>
+      <h2 class="search-title">（きっぷの絞り込み）</h2>
 
       <section class="search-panel">
-
         <div class="search-row">
-
-          <!-- エリア -->
           <div class="field">
-            <label
-              class="field-label"
-              for="area"
-            >
-              エリア
-            </label>
-
+            <label class="field-label" for="area">エリア</label>
             <select id="area">
               <option value="">指定なし</option>
             </select>
           </div>
 
-          <!-- 社局名 -->
           <div class="field">
-            <label
-              class="field-label"
-              for="company"
-            >
-              社局名
-            </label>
-
+            <label class="field-label" for="company">社局名</label>
             <select id="company">
               <option value="">指定なし</option>
             </select>
           </div>
 
-          <!-- きっぷの種類 -->
           <div class="field">
-            <label
-              class="field-label"
-              for="ticketType"
-            >
-              きっぷの種類
-            </label>
-
+            <label class="field-label" for="ticketType">きっぷの種類</label>
             <select id="ticketType">
-
-              <option value="">
-                指定なし
-              </option>
-
-              <option value="回数券">
-                回数券
-              </option>
-
-              <option value="フリーパス">
-                フリーパス
-              </option>
-
-              <option value="片道">
-                片道
-              </option>
-
-              <option value="往復">
-                往復
-              </option>
-
-              <option value="施設券セット">
-                施設券セット
-              </option>
-
-              <option value="その他">
-                その他
-              </option>
-
+              <option value="">指定なし</option>
+              <option value="回数券">回数券</option>
+              <option value="フリーパス">フリーパス</option>
+              <option value="片道">片道</option>
+              <option value="往復">往復</option>
+              <option value="施設券セット">施設券セット</option>
+              <option value="その他">その他</option>
             </select>
           </div>
 
-          <!-- 媒体 -->
           <div class="field">
-            <label
-              class="field-label"
-              for="media"
-            >
-              媒体
-            </label>
-
+            <label class="field-label" for="media">媒体</label>
             <select id="media">
-
-              <option value="">
-                指定なし
-              </option>
-              
-              <option value="紙">
-                紙
-              </option>
-              
-              <option value="QR">
-                QR
-              </option>
-              
-              <option value="ICカード">
-                ICカード
-              </option>
-              
-              <option value="その他">
-                その他
-              </option>
-
+              <option value="">指定なし</option>
+              <option value="紙">紙</option>
+              <option value="QR">QR</option>
+              <option value="ICカード">ICカード</option>
+              <option value="その他">その他</option>
             </select>
           </div>
 
-          <!-- 検索ボタン -->
           <button
             id="searchButton"
             class="search-button"
             type="button"
             aria-label="検索"
           ></button>
-
         </div>
 
-        <!-- 曜日 -->
         <div class="weekday-area">
-
-          <span class="weekday-label">
-            利用できる曜日
-          </span>
+          <span class="weekday-label">利用できる曜日</span>
 
           <div class="weekday-list">
-
             <div class="weekday-option">
-              <input
-                type="checkbox"
-                id="mon"
-                value="月"
-              >
+              <input type="checkbox" id="mon" value="月">
               <label for="mon">月</label>
             </div>
-
             <div class="weekday-option">
-              <input
-                type="checkbox"
-                id="tue"
-                value="火"
-              >
+              <input type="checkbox" id="tue" value="火">
               <label for="tue">火</label>
             </div>
-
             <div class="weekday-option">
-              <input
-                type="checkbox"
-                id="wed"
-                value="水"
-              >
+              <input type="checkbox" id="wed" value="水">
               <label for="wed">水</label>
             </div>
-
             <div class="weekday-option">
-              <input
-                type="checkbox"
-                id="thu"
-                value="木"
-              >
+              <input type="checkbox" id="thu" value="木">
               <label for="thu">木</label>
             </div>
-
             <div class="weekday-option">
-              <input
-                type="checkbox"
-                id="fri"
-                value="金"
-              >
+              <input type="checkbox" id="fri" value="金">
               <label for="fri">金</label>
             </div>
-
             <div class="weekday-option saturday">
-              <input
-                type="checkbox"
-                id="sat"
-                value="土"
-              >
+              <input type="checkbox" id="sat" value="土">
               <label for="sat">土</label>
             </div>
-
             <div class="weekday-option sunday">
-              <input
-                type="checkbox"
-                id="sun"
-                value="日"
-              >
+              <input type="checkbox" id="sun" value="日">
               <label for="sun">日</label>
             </div>
-
             <div class="weekday-option holiday">
-              <input
-                type="checkbox"
-                id="holiday"
-                value="祝"
-              >
+              <input type="checkbox" id="holiday" value="祝">
               <label for="holiday">祝</label>
             </div>
-
           </div>
         </div>
-        <!-- 会員限定きっぷを非表示 -->
+
         <div class="member-filter">
           <label>
-            <input
-              type="checkbox"
-              id="hideMemberOnly"
-            >
+            <input type="checkbox" id="hideMemberOnly">
             会員限定のきっぷを表示しない
           </label>
         </div>
       </section>
-
     </div>
 
-    <!-- 検索結果 -->
-    <section
-      id="results"
-      class="results"
-    >
-
-      <h2 class="results-title">
-        検索結果
-      </h2>
-
-      <div
-        id="resultCount"
-        class="result-count"
-      ></div>
-
+    <section id="results" class="results">
+      <h2 class="results-title">検索結果</h2>
+      <div id="resultCount" class="result-count"></div>
       <div id="resultList"></div>
-
     </section>
-
   </div>
 
   <script>
-
     /*
-     * ========================================
      * 社局・エリア設定
-     * ========================================
      */
-
     const companiesByArea = {
-
       "北海道": [
         "JR北海道",
         "札幌市交通局(地下鉄)",
@@ -791,11 +544,11 @@
         "東急",
         "東武",
         "京急",
-        "相鉄",
-        "東京メトロ",
+        "相鉄", 
+        "東京メトロ", 
         "都営地下鉄",
-        "鹿島臨海鉄道",
-        "関東鉄道",
+        "鹿島臨海鉄道", 
+        "関東鉄道", 
         "ひたちなか海浜鉄道",
         "宇都宮ライトレール",
         "真岡鉄道",
@@ -804,12 +557,12 @@
         "上毛電気鉄道",
         "わたらせ渓谷鉄道",
         "埼玉高速鉄道",
-        "埼玉新都市交通(ﾆｭｰｼｬﾄﾙ)",
+        "埼玉新都市交通(ニューシャトル)",
         "秩父鉄道",
         "いすみ鉄道",
         "小湊鉄道",
         "芝山鉄道",
-        "千葉都市ﾓﾉﾚｰﾙ",
+        "千葉都市モノレール",
         "銚子電鉄",
         "東葉高速",
         "北総鉄道",
@@ -955,583 +708,310 @@
         "鹿児島市交通局(鹿児島市電)",
         "沖縄都市モノレール"
       ]
-
     };
 
-
     /*
-     * ========================================
      * DOM取得
-     * ========================================
      */
-
-    const areaSelect =
-      document.getElementById("area");
-
-    const companySelect =
-      document.getElementById("company");
-
-    const ticketTypeSelect =
-      document.getElementById("ticketType");
-
-    const mediaSelect =
-      document.getElementById("media");
-
-    const searchButton =
-      document.getElementById("searchButton");
-
-    const results =
-      document.getElementById("results");
-
-    const resultCount =
-      document.getElementById("resultCount");
-
-    const resultList =
-      document.getElementById("resultList");
-
+    const areaSelect = document.getElementById("area");
+    const companySelect = document.getElementById("company");
+    const ticketTypeSelect = document.getElementById("ticketType");
+    const mediaSelect = document.getElementById("media");
+    const searchButton = document.getElementById("searchButton");
+    const results = document.getElementById("results");
+    const resultCount = document.getElementById("resultCount");
+    const resultList = document.getElementById("resultList");
+    const hideMemberOnlyCheckbox = document.getElementById("hideMemberOnly");
 
     /*
-     * ========================================
-     * きっぷデータ
-     * ========================================
+     * きっぷデータとエラー情報
      */
-
     let tickets = [];
-
     let ticketsLoaded = false;
-
+    let ticketLoadError = "";
 
     /*
-     * ========================================
      * tickets.jsonを読み込む
-     * ========================================
      */
-
-    
-async function loadTickets() {
-  try {
-    const response = await fetch("./data/tickets.json");
-
-    if (!response.ok) {
-      throw new Error(
-        `HTTPエラー: ${response.status} ${response.statusText}`
-      );
-    }
-
-    const data = await response.json();
-
-    if (!Array.isArray(data.tickets)) {
-      throw new Error(
-        'JSONの形式が違います。"tickets" 配列を確認してください。'
-      );
-    }
-
-    tickets = data.tickets;
-    ticketsLoaded = true;
-
-  } catch (error) {
-    console.error(
-      "きっぷデータの読み込みエラー:",
-      error
-    );
-
-    ticketsLoaded = false;
-
-    results.style.display = "block";
-    resultCount.textContent = "";
-    resultList.innerHTML = `
-      <div class="error-message">
-        読み込みエラー：<br>
-        ${escapeHtml(error.message || String(error))}
-      </div>
-    `;
-  }
-}
+    async function loadTickets() {
+      ticketLoadError = "";
 
       try {
-
-        const response =
-          await fetch("./data/tickets.json");
+        const response = await fetch("./data/tickets.json");
 
         if (!response.ok) {
-
           throw new Error(
-            "tickets.jsonの読み込みに失敗しました"
+            `HTTPエラー: ${response.status} ${response.statusText || ""}`.trim()
           );
-
         }
 
-        const data =
-          await response.json();
+        let data;
 
-        tickets =
-          Array.isArray(data.tickets)
-            ? data.tickets
-            : [];
+        try {
+          data = await response.json();
+        } catch (error) {
+          throw new Error(
+            "JSONの解析に失敗しました。tickets.jsonのカンマや括弧などを確認してください。詳細: " +
+            (error.message || String(error))
+          );
+        }
 
+        if (
+          !data ||
+          typeof data !== "object" ||
+          !Array.isArray(data.tickets)
+        ) {
+          throw new Error(
+            'JSONの形式が違います。ファイルの一番上に {"tickets": [...]} の形式でデータがあるか確認してください。'
+          );
+        }
+
+        tickets = data.tickets;
         ticketsLoaded = true;
+        ticketLoadError = "";
 
       } catch (error) {
-
-        console.error(
-          "きっぷデータの読み込みに失敗しました:",
-          error
-        );
+        console.error("きっぷデータの読み込みエラー:", error);
 
         ticketsLoaded = false;
-
+        ticketLoadError = error.message || String(error);
       }
-
     }
 
-
     /*
-     * ========================================
      * エリア選択肢を作成
-     * ========================================
      */
-
     function setupAreas() {
-
-      Object.keys(companiesByArea)
-        .forEach(area => {
-
-          const option =
-            document.createElement("option");
-
-          option.value = area;
-          option.textContent = area;
-
-          areaSelect.appendChild(option);
-
-        });
-
+      Object.keys(companiesByArea).forEach(area => {
+        const option = document.createElement("option");
+        option.value = area;
+        option.textContent = area;
+        areaSelect.appendChild(option);
+      });
     }
 
-
     /*
-     * ========================================
      * 社局選択肢を更新
-     * ========================================
      */
-
     function updateCompanies() {
-
-      const selectedArea =
-        areaSelect.value;
+      const selectedArea = areaSelect.value;
 
       companySelect.innerHTML = "";
 
-      const defaultOption =
-        document.createElement("option");
-
+      const defaultOption = document.createElement("option");
       defaultOption.value = "";
       defaultOption.textContent = "指定なし";
-
-      companySelect.appendChild(
-        defaultOption
-      );
-
-
-      /*
-       * エリア指定なしの場合
-       * 全社局を表示
-       */
+      companySelect.appendChild(defaultOption);
 
       if (selectedArea === "") {
+        const allCompanies = new Set();
 
-        const allCompanies =
-          new Set();
-
-        Object.values(companiesByArea)
-          .forEach(companies => {
-
-            companies.forEach(company => {
-
-              allCompanies.add(company);
-
-            });
-
-          });
-
-        Array.from(allCompanies)
-          .sort((a, b) =>
-            a.localeCompare(b, "ja")
-          )
-          .forEach(company => {
-
-            const option =
-              document.createElement("option");
-
-            option.value = company;
-            option.textContent = company;
-
-            companySelect.appendChild(
-              option
-            );
-
-          });
-
-        return;
-
-      }
-
-
-      /*
-       * エリアが指定されている場合
-       * そのエリアの社局だけ表示
-       */
-
-      const companies =
-        companiesByArea[selectedArea] || [];
-
-      companies.forEach(company => {
-
-        const option =
-          document.createElement("option");
-
-        option.value = company;
-        option.textContent = company;
-
-        companySelect.appendChild(
-          option
-        );
-
-      });
-
-    }
-
-
-    /*
-     * ========================================
-     * 曜日を取得
-     * ========================================
-     */
-
-    function getSelectedWeekdays() {
-
-      const checkboxes =
-        document.querySelectorAll(
-          ".weekday-option input:checked"
-        );
-
-      return Array.from(checkboxes)
-        .map(input => input.value);
-
-    }
-
-
-    /*
-     * ========================================
-     * 検索
-     * ========================================
-     */
-
-    async function searchTickets() {
-
-      /*
-       * まだ読み込んでいない場合だけ
-       * ここで読み込む
-       */
-
-      if (!ticketsLoaded) {
-
-        await loadTickets();
-
-      }
-
-
-      /*
-       * 読み込みに失敗した場合
-       */
-
-      if (!ticketsLoaded) {
-
-        results.style.display = "block";
-
-        resultCount.textContent = "";
-
-        resultList.innerHTML = `
-          <div class="error-message">
-            きっぷデータを読み込めませんでした。<br>
-            ネットワーク接続を確認してください。<br>
-            何度も表示される場合は、運営にお問い合わせください。
-          </div>
-        `;
-
-        return;
-
-      }
-
-
-      /*
-       * 検索条件取得
-       */
-
-      const area =
-        areaSelect.value;
-
-      const company =
-        companySelect.value;
-
-      const ticketType =
-        ticketTypeSelect.value;
-
-      const media =
-        mediaSelect.value;
-
-      const selectedWeekdays =
-        getSelectedWeekdays();
-      
-      const hideMemberOnly =
-  document.getElementById("hideMemberOnly").checked;
-
-
-      /*
-       * 条件に合うきっぷだけ残す
-       */
-
-      const filteredTickets =
-        tickets.filter(ticket => {
-                    // 会員限定きっぷを除外
-          if (
-            hideMemberOnly &&
-            ticket.memberOnly === true
-          ) {
-            return false;
-          }
-
-          /*
-           * エリア
-           */
-
-          if (
-            area !== "" &&
-            !Array.isArray(ticket.areas) ||
-            (
-              area !== "" &&
-              !ticket.areas.includes(area)
-            )
-          ) {
-
-            return false;
-
-          }
-
-
-          /*
-           * 社局
-           */
-
-          if (
-            company !== "" &&
-            (
-              !Array.isArray(ticket.companies) ||
-              !ticket.companies.includes(company)
-            )
-          ) {
-
-            return false;
-
-          }
-
-
-          /*
-           * きっぷの種類
-           */
-
-          if (
-            ticketType !== "" &&
-            ticket.type !== ticketType
-          ) {
-
-            return false;
-
-          }
-
-
-          /*
-           * 媒体
-           */
-
-          if (
-            media !== "" &&
-            ticket.medium !== media
-          ) {
-
-            return false;
-
-          }
-
-
-          /*
-           * 曜日
-           *
-           * 選択した曜日を全部含んでいる
-           * きっぷだけ表示
-           */
-
-          if (
-            selectedWeekdays.length > 0
-          ) {
-
-            if (
-              !Array.isArray(ticket.weekdays)
-            ) {
-
-              return false;
-
-            }
-
-            const matches =
-              selectedWeekdays.every(
-                day =>
-                  ticket.weekdays.includes(day)
-              );
-
-            if (!matches) {
-
-              return false;
-
-            }
-
-          }
-
-
-          return true;
-
+        Object.values(companiesByArea).forEach(companies => {
+          companies.forEach(company => allCompanies.add(company));
         });
 
+        Array.from(allCompanies)
+          .sort((a, b) => a.localeCompare(b, "ja"))
+          .forEach(company => {
+            const option = document.createElement("option");
+            option.value = company;
+            option.textContent = company;
+            companySelect.appendChild(option);
+          });
 
-      /*
-       * 検索結果表示
-       */
+        return;
+      }
+
+      const companies = companiesByArea[selectedArea] || [];
+
+      companies.forEach(company => {
+        const option = document.createElement("option");
+        option.value = company;
+        option.textContent = company;
+        companySelect.appendChild(option);
+      });
+    }
+
+    /*
+     * 選択された曜日を取得
+     */
+    function getSelectedWeekdays() {
+      const checkboxes = document.querySelectorAll(
+        ".weekday-option input:checked"
+      );
+
+      return Array.from(checkboxes).map(input => input.value);
+    }
+
+    /*
+     * エラーを画面に表示
+     */
+    function showLoadError() {
+      results.style.display = "block";
+      resultCount.textContent = "";
+      resultList.innerHTML = `
+        <div class="error-message">
+          <strong>きっぷデータを読み込めませんでした。</strong>
+          <p>エラー内容：${escapeHtml(ticketLoadError || "原因を特定できませんでした。")}</p>
+          <p>確認すること：</p>
+          <ul>
+            <li>data/tickets.json が正しい場所にあるか</li>
+            <li>ファイル名の大文字・小文字が一致しているか</li>
+            <li>tickets.json のJSON形式に誤りがないか</li>
+            <li>GitHub Pagesに修正が反映されているか</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    /*
+     * 検索
+     */
+    async function searchTickets() {
+      if (!ticketsLoaded) {
+        await loadTickets();
+      }
+
+      if (!ticketsLoaded) {
+        showLoadError();
+        return;
+      }
+
+      const area = areaSelect.value;
+      const company = companySelect.value;
+      const ticketType = ticketTypeSelect.value;
+      const media = mediaSelect.value;
+      const selectedWeekdays = getSelectedWeekdays();
+      const hideMemberOnly = hideMemberOnlyCheckbox.checked;
+
+      const filteredTickets = tickets.filter(ticket => {
+        if (!ticket || typeof ticket !== "object") {
+          return false;
+        }
+
+        // 会員限定きっぷを除外
+        if (hideMemberOnly && ticket.memberOnly === true) {
+          return false;
+        }
+
+        // エリア
+        if (
+          area !== "" &&
+          (
+            !Array.isArray(ticket.areas) ||
+            !ticket.areas.includes(area)
+          )
+        ) {
+          return false;
+        }
+
+        // 社局
+        if (
+          company !== "" &&
+          (
+            !Array.isArray(ticket.companies) ||
+            !ticket.companies.includes(company)
+          )
+        ) {
+          return false;
+        }
+
+        // きっぷの種類
+        if (ticketType !== "" && ticket.type !== ticketType) {
+          return false;
+        }
+
+        // 媒体
+        if (media !== "" && ticket.medium !== media) {
+          return false;
+        }
+
+        // 曜日：選んだ曜日をすべて含むきっぷだけ表示
+        if (selectedWeekdays.length > 0) {
+          if (!Array.isArray(ticket.weekdays)) {
+            return false;
+          }
+
+          const matches = selectedWeekdays.every(day =>
+            ticket.weekdays.includes(day)
+          );
+
+          if (!matches) {
+            return false;
+          }
+        }
+
+        return true;
+      });
 
       results.style.display = "block";
-
       resultCount.textContent =
         `${filteredTickets.length}件のきっぷが見つかりました。`;
-
       resultList.innerHTML = "";
 
-
-      /*
-       * 該当なし
-       */
-
       if (filteredTickets.length === 0) {
-
         resultList.innerHTML = `
           <div class="no-results">
             条件に一致するきっぷはありませんでした。
           </div>
         `;
-
         return;
-
       }
 
-
-      /*
-       * 結果カード作成
-       */
-
       filteredTickets.forEach(ticket => {
+        const card = document.createElement("article");
+        card.className = "result-card";
 
-        const card =
-          document.createElement("article");
+        // 社局タグ
+        const companyTags = Array.isArray(ticket.companies)
+          ? ticket.companies
+              .map(company =>
+                `<span class="tag">${escapeHtml(company)}</span>`
+              )
+              .join("")
+          : "";
 
-        card.className =
-          "result-card";
+        // 曜日
+        const weekdays = Array.isArray(ticket.weekdays)
+          ? ticket.weekdays.join("・")
+          : "指定なし";
 
-
-        /*
-         * 社局タグ
-         */
-
-        const companyTags =
-          Array.isArray(ticket.companies)
-            ? ticket.companies
-                .map(company =>
-                  `<span class="tag">${escapeHtml(company)}</span>`
-                )
-                .join("")
-            : "";
-
-
-        /*
-         * 曜日
-         */
-
-        const weekdays =
-          Array.isArray(ticket.weekdays)
-            ? ticket.weekdays.join("・")
-            : "指定なし";
-
-
-        /*
-         * 価格
-         */
-
-        let priceText =
-          "料金情報なし";
+        // 価格
+        let priceText = "料金情報なし";
 
         if (
           ticket.price &&
           typeof ticket.price.adult === "number"
         ) {
-
           priceText =
             `大人 ${ticket.price.adult.toLocaleString()}円`;
 
-          if (
-            typeof ticket.price.child === "number"
-          ) {
-
+          if (typeof ticket.price.child === "number") {
             priceText +=
               ` / 子ども ${ticket.price.child.toLocaleString()}円`;
-
           }
-
         }
 
-
-        /*
-         * 注意事項
-         */
-
+        // 注意事項
         let notesHtml = "";
 
-        if (
-          Array.isArray(ticket.notes) &&
-          ticket.notes.length > 0
-        ) {
-
+        if (Array.isArray(ticket.notes) && ticket.notes.length > 0) {
           notesHtml = `
             <div>
               <strong>注意事項</strong>
-
               <ul class="notes">
                 ${ticket.notes
-                  .map(note =>
-                    `<li>${escapeHtml(note)}</li>`
-                  )
+                  .map(note => `<li>${escapeHtml(note)}</li>`)
                   .join("")}
               </ul>
             </div>
           `;
-
         }
 
-
-        /*
-         * 公式サイト
-         */
-
+        // 公式サイト
         let officialLinkHtml = "";
 
         if (ticket.officialUrl) {
-
           officialLinkHtml = `
             <a
               class="official-link"
@@ -1542,18 +1022,11 @@ async function loadTickets() {
               公式サイトを見る
             </a>
           `;
-
         }
 
-
-        /*
-         * カードHTML
-         */
-
+        // 結果カード
         card.innerHTML = `
-
           <div class="result-tags">
-
             ${companyTags}
 
             ${
@@ -1567,33 +1040,23 @@ async function loadTickets() {
                 ? `<span class="tag">${escapeHtml(ticket.medium)}</span>`
                 : ""
             }
-
           </div>
-
 
           <h3 class="result-name">
             ${escapeHtml(ticket.name || "名称未設定")}
           </h3>
 
-
           <div class="result-price">
             ${priceText}
           </div>
 
-
           ${
             ticket.description
-              ? `
-                <p class="result-description">
-                  ${escapeHtml(ticket.description)}
-                </p>
-              `
+              ? `<p class="result-description">${escapeHtml(ticket.description)}</p>`
               : ""
           }
 
-
           <div class="result-info">
-
             <div>
               <strong>利用できる曜日：</strong>
               ${escapeHtml(weekdays)}
@@ -1601,107 +1064,58 @@ async function loadTickets() {
 
             ${
               ticket.usageArea
-                ? `
-                  <div>
-                    <strong>利用エリア：</strong>
-                    ${escapeHtml(ticket.usageArea)}
-                  </div>
-                `
+                ? `<div><strong>利用エリア：</strong>${escapeHtml(ticket.usageArea)}</div>`
                 : ""
             }
-
           </div>
 
-
           ${notesHtml}
-
           ${officialLinkHtml}
-
         `;
 
-
         resultList.appendChild(card);
-
       });
-
     }
 
-
     /*
-     * ========================================
      * HTMLエスケープ
-     * ========================================
      */
-
     function escapeHtml(value) {
-
       return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
     }
 
-
     /*
-     * ========================================
      * URL用エスケープ
-     * ========================================
      */
-
     function escapeAttribute(value) {
-
       return String(value)
         .replace(/&/g, "&amp;")
         .replace(/"/g, "&quot;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
-
     }
 
-
     /*
-     * ========================================
      * イベント設定
-     * ========================================
      */
-
-    areaSelect.addEventListener(
-      "change",
-      updateCompanies
-    );
-
-
-    searchButton.addEventListener(
-      "click",
-      searchTickets
-    );
-
+    areaSelect.addEventListener("change", updateCompanies);
+    searchButton.addEventListener("click", searchTickets);
 
     /*
-     * ========================================
      * 初期設定
-     * ========================================
      */
-
     setupAreas();
-
     updateCompanies();
 
-
     /*
-     * ページを開いた時点では
-     * tickets.jsonを読み込まない。
-     *
-     * 「検索」を押したときに読み込む。
-     *
-     * そのため、何も検索していない状態で
-     * エラーメッセージが表示されることはない。
+     * ページを開いた時点ではデータを読み込まない。
+     * 検索ボタンを押したときに読み込む。
      */
-
   </script>
-
 </body>
 </html>
