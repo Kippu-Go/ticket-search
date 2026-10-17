@@ -32,6 +32,7 @@
       },
       "description": "JR東海の名古屋近郊と伊勢鉄道全線が乗り放題のきっぷです。",
       "notes": [],
+      "memberOnly": false,
       "officialUrl": "#",
       "lastChecked": "2026-09-25"
     },
@@ -71,6 +72,7 @@
       },
       "description": "伊勢・鳥羽周辺を自由に利用できるフリーきっぷです。",
       "notes": [],
+      "memberOnly": true
       "officialUrl": "#",
       "lastChecked": "2026-09-25"
     },
@@ -139,6 +141,7 @@
       },
       "description": "関西のおでかけに利用できるフリーきっぷです。",
       "notes": [],
+      "memberOnly": false,
       "officialUrl": "#",
       "lastChecked": "2026-09-25"
     }
