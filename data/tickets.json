@@ -107,6 +107,7 @@
       },
       "description": "東海エリアのおでかけに利用できるきっぷです。",
       "notes": [],
+      memberOnly: true
       "officialUrl": "#",
       "lastChecked": "2026-09-25"
     },
