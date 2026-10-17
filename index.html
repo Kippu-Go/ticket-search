@@ -1251,6 +1251,13 @@
 
       const filteredTickets =
         tickets.filter(ticket => {
+                    // 会員限定きっぷを除外
+          if (
+            hideMemberOnly &&
+            ticket.memberOnly === true
+          ) {
+            return false;
+          }
 
           /*
            * エリア
