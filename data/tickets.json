@@ -320,6 +320,118 @@
       "memberOnly": false,
       "officialUrl": "https://www.yui-rail.co.jp",
       "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-123830",
+      "name": "青春18きっぷ（3日間用）",
+      "companies": [
+        "JR北海道",
+        "JR東日本",
+        "JR東海",
+        "JR西日本",
+        "JR四国",
+        "JR九州"
+      ],
+      "areas": [
+        "北海道",
+        "東北",
+        "関東甲信",
+        "北陸",
+        "東海4県",
+        "関西",
+        "中国",
+        "四国",
+        "九州・沖縄"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 10000,
+        "child": null
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "JR線全線",
+      "salePeriod": {
+        "from": "2026-11-27",
+        "to": "2027-01-11"
+      },
+      "usagePeriod": {
+        "from": "2026-12-11",
+        "to": "2027-01-11"
+      },
+      "description": "JR線全線およびBRT、JR西日本宮島フェリーが3日間利用可能",
+      "notes": [
+        "特急列車、新幹線は利用不可",
+        "普通列車グリーン車、快速列車等の指定席は別途料金が必要"
+      ],
+      "memberOnly": false,
+      "officialUrl": "#",
+      "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-433926",
+      "name": "青春18きっぷ（5日間用）",
+      "companies": [
+        "JR北海道",
+        "JR東日本",
+        "JR東海",
+        "JR西日本",
+        "JR四国",
+        "JR九州"
+      ],
+      "areas": [
+        "北海道",
+        "東北",
+        "関東甲信",
+        "北陸",
+        "東海4県",
+        "関西",
+        "中国",
+        "四国",
+        "九州・沖縄"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 12050,
+        "child": null
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "JR線全線",
+      "salePeriod": {
+        "from": "2026-11-27",
+        "to": "2027-01-11"
+      },
+      "usagePeriod": {
+        "from": "2026-12-11",
+        "to": "2027-01-11"
+      },
+      "description": "JR線全線およびBRT、JR西日本宮島フェリーが3日間利用可能",
+      "notes": [
+        "特急列車、新幹線は利用不可",
+        "普通列車グリーン車、快速列車等の指定席は別途料金が必要"
+      ],
+      "memberOnly": false,
+      "officialUrl": "#",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
