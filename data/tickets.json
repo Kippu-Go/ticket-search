@@ -228,6 +228,46 @@
       "memberOnly": true,
       "officialUrl": "https://www.hankyu.co.jp/ticket/otoku/013812.html",
       "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-717956",
+      "name": "１dayフリーきっぷ",
+      "companies": [
+        "四日市あすなろう鉄道"
+      ],
+      "areas": [
+        "東海4県"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 550,
+        "child": 280
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "全線利用可能",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "四日市あすなろう鉄道が1日乗り放題になるきっぷ",
+      "notes": [],
+      "memberOnly": false,
+      "officialUrl": "#",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
