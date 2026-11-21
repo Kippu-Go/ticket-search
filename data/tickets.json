@@ -388,6 +388,46 @@
       "memberOnly": false,
       "officialUrl": "https://kumagawa-rail.com/time-fare/",
       "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-856138",
+      "name": "バスモノ那覇バス&ゆいレール1日共通1dayパスポート",
+      "companies": [
+        "沖縄都市モノレール"
+      ],
+      "areas": [
+        "九州・沖縄"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 1500,
+        "child": 750
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "ゆいレール全線と那覇市内の那覇バス全線利用可能",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "",
+      "notes": [],
+      "memberOnly": false,
+      "officialUrl": "https://www.yui-rail.co.jp",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
