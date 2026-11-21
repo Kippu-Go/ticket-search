@@ -348,6 +348,46 @@
       "memberOnly": false,
       "officialUrl": "https://www.yui-rail.co.jp",
       "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-244178",
+      "name": "1日フリー乗車券",
+      "companies": [
+        "くま川鉄道"
+      ],
+      "areas": [
+        "九州・沖縄"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 1200,
+        "child": 600
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "運転を再開している列車、代替バス利用可能",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "",
+      "notes": [],
+      "memberOnly": false,
+      "officialUrl": "https://kumagawa-rail.com/time-fare/",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
