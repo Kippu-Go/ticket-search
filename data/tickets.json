@@ -308,6 +308,46 @@
       "memberOnly": false,
       "officialUrl": "https://www.yui-rail.co.jp",
       "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-266461",
+      "name": "2日フリー乗車券",
+      "companies": [
+        "沖縄都市モノレール"
+      ],
+      "areas": [
+        "九州・沖縄"
+      ],
+      "type": "フリーパス",
+      "medium": "紙",
+      "price": {
+        "adult": 1800,
+        "child": 900
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "全線利用可能",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "ゆいレールが48時間全線利用可能なフリー切符\n割引施設がある",
+      "notes": [],
+      "memberOnly": false,
+      "officialUrl": "https://www.yui-rail.co.jp",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
