@@ -77,39 +77,39 @@
       "lastChecked": "2026-09-25"
     },
     {
-"id": "kippu-0003",
-"name": "東海おでかけパス",
-"companies": [
-"JR東海"
-],
-"areas": [
-"東海4県"
-],
-"type": "フリーパス",
-"medium": "デジタル",
-"price": {
-"adult": 2720,
-"child": null
-},
-"weekdays": [
-"土",
-"日",
-"祝"
-],
-"usageArea": "東海エリア",
-"salePeriod": {
-"from": null,
-"to": null
-},
-"usagePeriod": {
-"from": null,
-"to": null
-},
-"description": "東海エリアのおでかけに利用できるきっぷです。",
-"notes": [],
-"memberOnly": true,
-"officialUrl": "#",
-"lastChecked": "2026-09-25"
+      "id": "kippu-0003",
+      "name": "東海おでかけパス",
+      "companies": [
+        "JR東海"
+      ],
+      "areas": [
+        "東海4県"
+      ],
+      "type": "フリーパス",
+      "medium": "デジタル",
+      "price": {
+        "adult": 2720,
+        "child": null
+      },
+      "weekdays": [
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "東海エリア",
+      "salePeriod": {
+        "from": null,
+        "to": null
+      },
+      "usagePeriod": {
+        "from": null,
+        "to": null
+      },
+      "description": "東海エリアのおでかけに利用できるきっぷです。",
+      "notes": [],
+      "memberOnly": true,
+      "officialUrl": "#",
+      "lastChecked": "2026-09-25"
     },
     {
       "id": "kippu-0004",
@@ -145,6 +145,89 @@
       "memberOnly": false,
       "officialUrl": "#",
       "lastChecked": "2026-09-25"
+    },
+    {
+      "id": "kippu-342269",
+      "name": "北急・モノレール京都おでかけきっぷ",
+      "companies": [
+        "阪急阪神HD･能勢電",
+        "大阪ﾓﾉﾚｰﾙ"
+      ],
+      "areas": [
+        "関西"
+      ],
+      "type": "フリーパス",
+      "medium": "QR",
+      "price": {
+        "adult": 1500,
+        "child": null
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "阪急電車　　　　宝塚線および京都線（箕面・千里・嵐山の各支線を含みます） 北大阪急行　　　全線 大阪モノレール　全線",
+      "salePeriod": {
+        "from": "2026-09-11",
+        "to": "2026-12-20"
+      },
+      "usagePeriod": {
+        "from": "2026-09-11",
+        "to": "2026-12-20"
+      },
+      "description": "阪急線の広範囲とその隙間を埋める北急・モノレールが乗れるフリー切符です。万博公園に行く際におすすめです。",
+      "notes": [],
+      "memberOnly": true,
+      "officialUrl": "https://www.hankyu.co.jp/ticket/otoku/014158.html",
+      "lastChecked": "2026-11-21"
+    },
+    {
+      "id": "kippu-676971",
+      "name": "阪急1dayパス",
+      "companies": [
+        "阪急阪神HD･能勢電"
+      ],
+      "areas": [
+        "関西"
+      ],
+      "type": "フリーパス",
+      "medium": "QR",
+      "price": {
+        "adult": 1300,
+        "child": null
+      },
+      "weekdays": [
+        "月",
+        "火",
+        "水",
+        "木",
+        "金",
+        "土",
+        "日",
+        "祝"
+      ],
+      "usageArea": "阪急電車全線（神戸高速線は除く）",
+      "salePeriod": {
+        "from": "2026-06-01",
+        "to": "2027-03-31"
+      },
+      "usagePeriod": {
+        "from": "2026-04-01",
+        "to": "2027-04-30"
+      },
+      "description": "阪急全線乗り放題でこれはすごいです。",
+      "notes": [
+        "スルッとQRtto Webページ（https://surutto-qrtto.com）、または阪急沿線アプリでお求めになれます。"
+      ],
+      "memberOnly": true,
+      "officialUrl": "https://www.hankyu.co.jp/ticket/otoku/013812.html",
+      "lastChecked": "2026-11-21"
     }
   ]
 }
