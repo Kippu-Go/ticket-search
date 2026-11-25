@@ -892,21 +892,6 @@
           `;
         }
 
-        // 公式サイト
-        let officialLinkHtml = "";
-
-        if (ticket.officialUrl) {
-          officialLinkHtml = `
-            <a
-              class="official-link"
-              href="${escapeAttribute(ticket.officialUrl)}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              公式サイトを見る
-            </a>
-          `;
-        }
 
         // 結果カード
         card.innerHTML = `
