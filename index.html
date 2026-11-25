@@ -949,6 +949,65 @@
       });
     }
 
+        /*
+     * 最終確認日の表示
+     * (この日数より古いと、「確認から半年以上たっています」と出す)
+     */
+    const STALE_DAYS = 180;
+
+    function formatCheckedDate(value) {
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value));
+
+      if (!match) {
+        return String(value);
+      }
+
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+      const day = Number(match[3]);
+      const date = new Date(year, month - 1, day);
+
+      // 2月30日のような、存在しない日付は、そのまま表示する
+      if (
+        date.getFullYear() !== year ||
+        date.getMonth() !== month - 1 ||
+        date.getDate() !== day
+      ) {
+        return String(value);
+      }
+
+      return `${year}年${month}月${day}日`;
+    }
+
+    // 最終確認日から、何日たったか(日付が読み取れないときは null)
+    function daysSinceChecked(value) {
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value));
+
+      if (!match) {
+        return null;
+      }
+
+      const checked = new Date(
+        Number(match[1]),
+        Number(match[2]) - 1,
+        Number(match[3])
+      );
+
+      // 存在しない日付(2月30日など)は、読み取れない扱いにする
+      if (
+        checked.getFullYear() !== Number(match[1]) ||
+        checked.getMonth() !== Number(match[2]) - 1 ||
+        checked.getDate() !== Number(match[3])
+      ) {
+        return null;
+      }
+
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      return Math.round((today - checked) / 86400000);
+    }
+    
     /*
      * HTMLエスケープ
      */
