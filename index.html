@@ -896,6 +896,24 @@
           `;
         }
 
+        // 最終確認日
+        let checkedHtml = "";
+
+        if (ticket.lastChecked) {
+          const days = daysSinceChecked(ticket.lastChecked);
+          const stale = days !== null && days > STALE_DAYS;
+
+          checkedHtml = `
+            <div>
+              <strong>最終確認日：</strong>${escapeHtml(formatCheckedDate(ticket.lastChecked))}
+              ${
+                stale
+                  ? `<span class="stale">（確認から半年以上たっています。購入前に公式サイトで最新の情報を確認してください）</span>`
+                  : ""
+              }
+            </div>
+          `;
+        }
 
         // 結果カード
         card.innerHTML = `
